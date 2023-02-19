@@ -8,7 +8,7 @@
             <v-row justify="center" align="center" style="height: 100%;">
               <v-col cols="3">
                 <a class="navbar-brand " href="/">
-                  <img src="../../public/img/menulog.png" alt="logo" style="height:30px;" /></a>
+                  <img :src="img" alt="logo" style="height:30px;" /></a>
               </v-col>
 
               <v-col cols="6">
@@ -54,6 +54,10 @@ export default {
       logout,
     };
   },
+  // 로고 이미지
+  data : ()=>({
+    img : require('../../public/img/menulog.png')
+  })
 };
 </script>
 

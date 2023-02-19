@@ -24,7 +24,8 @@
         <v-divider style="border-color:#053D68;"></v-divider><!--=hr-->
         <v-col col="2"></v-col>
         <v-col col="3">
-          <v-text-field placeholder="검색" type="text"  prepend-inner-icon="fa-search" color="#008037"></v-text-field>
+          <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+          <v-text-field placeholder="검색" type="text"  prepend-inner-icon="fa-sharp fa-solid fa-magnifying-glass" color="#008037"></v-text-field>
         </v-col>
         <v-col col="3"></v-col>
         
