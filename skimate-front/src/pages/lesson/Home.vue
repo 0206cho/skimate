@@ -1,38 +1,40 @@
 <template>
-  <div class="form-signin w-100 m-auto">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <v-container style="height=100%; width: 100%; padding-left: 50px; padding-right: 50px;">
+    <!--제목-->
+    <v-row>
+      <v-col cols="2"></v-col>
+      <v-col cols="1">
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
+        </h1>
+      </v-col>
+      <v-col cols="6">
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">강습
+        </h1>
+      </v-col>
+      <v-col cols="1">
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
+        </h1>
+      </v-col>
+      <v-col cols="2"></v-col>
+    </v-row>
 
-    <div class="form-floating">
-      <input
-        type="email"
-        class="form-control"
-        id="floatingInput"
-        placeholder="name@example.com"
-        v-model="state.form.email"
-      />
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-        v-model="state.form.password"
-      />
-      <label for="floatingPassword">Password</label>
-    </div>
+    <v-row>
+      <v-col cols="2"></v-col>
+      <v-col cols="8">
+        <v-divider style="border-color:#053D68;"></v-divider><!--=hr-->
+        <v-col col="2"></v-col>
+        <v-col col="3">
+          <v-text-field placeholder="검색" type="text"  prepend-inner-icon="fa-search" color="#008037"></v-text-field>
+        </v-col>
+        <v-col col="3"></v-col>
+        
+      </v-col>
+      <v-col cols="2"></v-col>
+    </v-row>
 
-    <div class="checkbox mb-3">
-      <label> <input type="checkbox" value="remember-me" /> Remember me </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" @click="submit()">
-      Sign in
-    </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
-  </div>
+  </v-container>
 </template>
-
+  
 <script>
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
@@ -69,7 +71,7 @@ export default {
   },
 };
 </script>
-
+  
 <style scoped>
 .form-signin {
   max-width: 330px;

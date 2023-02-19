@@ -39,9 +39,14 @@ export default {
 
 <style>
 @font-face {
-  font-family: 'Title_font';
+  font-family: 'Title_bold';
   src: url('../public/font/KOTRA_BOLD.ttf') format('truetype');
-  font-weight: 1000;
+  /*font-weight: 1000;  */
+}
+
+@font-face {
+  font-family: 'Title_font';
+  src: url('../public/font/Bold.ttf') format('truetype');
 }
 .bd-placeholder-img {
   font-size: 1.125rem;
