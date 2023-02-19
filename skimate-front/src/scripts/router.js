@@ -3,7 +3,7 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import LessonHome from '../pages/lesson/LessonHome.vue';
 import LessonWrite from '../pages/lesson/LessonWrite.vue';
-import reserHome from '../pages/reservation/reser.vue';
+import reserHome from '../pages/reservation/ReserHome.vue';
 
 const routes = [
   { path: "/", component: Home },

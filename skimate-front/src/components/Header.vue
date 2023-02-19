@@ -13,7 +13,7 @@
 
               <v-col cols="6">
                 <a class="navbar-brand pr-5" href="/" style="font-family: 'Title_bold'; color: #053D68;">비발디파크</a>
-                <a class="navbar-brand px-5" href="/" style="font-family: 'Title_font'">예약</a>
+                <a class="navbar-brand px-5" href="/reservation" style="font-family: 'Title_font'">예약</a>
                 <a class="navbar-brand px-5" href="/lesson" style="font-family: 'Title_font'">강습</a>
                 <a class="navbar-brand px-5" href="/" style="font-family: 'Title_font'">공지사항</a>
               </v-col>
