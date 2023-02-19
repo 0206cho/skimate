@@ -36,7 +36,7 @@
                 </v-card>
               </v-col>
               <v-col cols="3" class="pt-7">
-                <v-btn color="#BFDDF9" to="/lesson/write">글쓰기</v-btn>
+                <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson/write">글쓰기</v-btn>
               </v-col>
             </v-row>
           </v-col>
