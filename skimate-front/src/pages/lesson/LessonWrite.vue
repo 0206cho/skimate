@@ -57,7 +57,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
-                    style="background-color: #BFDDF9;">
+                    style="background-color: #BFDDF9; font-weight: bold; color: #053D68;">
                     주의사항
                   </button>
                 </h2>
@@ -77,7 +77,7 @@
 
           <v-card-text class="end text-md-right">
             <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;"
-              to="/lesson/write">글쓰기</v-btn>
+              to="/lesson">글쓰기</v-btn>
           </v-card-text>
         </v-card>
       </v-col>
