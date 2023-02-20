@@ -24,8 +24,9 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <router-link to="/login" class="text-black" v-if="!$store.state.account.id">Login</router-link>
-                      <a to="/login" class="text-white" @click="logout()" v-else>Logout</a>
+                      <router-link to="/login" class="text-black" v-if="!$store.state.account.id" style="text-decoration: none;">
+                        <v-icon dark size="40px">mdi-account</v-icon>
+                      </router-link>
                     </li>
                   </ul>
                 </div>

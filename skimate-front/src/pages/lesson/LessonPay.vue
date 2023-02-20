@@ -63,10 +63,9 @@
 
           <v-card-text class="end text-md-center">
             <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson">목록으로</v-btn>
-            <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson">신청하기</v-btn> <!--결제 api-->
             <!--작성자만 표기-->
-            <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson">수정하기</v-btn>
-            <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson">삭제하기</v-btn>
+            <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson">수정</v-btn>
+            <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;" to="/lesson">삭제</v-btn>
           </v-card-text>
         </v-card>
       </v-col>

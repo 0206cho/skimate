@@ -4,6 +4,7 @@ import Login from "@/pages/Login";
 import LessonHome from '../pages/lesson/LessonHome.vue';
 import LessonWrite from '../pages/lesson/LessonWrite.vue';
 import LessonDetail from '../pages/lesson/LessonDetail.vue';
+import LessonPay from '../pages/lesson/LessonPay.vue';
 import reserHome from '../pages/reservation/reser.vue';
 
 const routes = [
@@ -15,6 +16,8 @@ const routes = [
   { path: "/lesson/write", component: LessonWrite},
   // 강습 상세페이지
   { path: "/lesson/detail", component: LessonDetail},
+  // 강습 결제페이지
+  { path: "/lesson/pay", component: LessonPay},
   // 예약 메인페이지
   { path: "/reservation", component: reserHome}
 ];
