@@ -5,7 +5,9 @@ import LessonHome from '../pages/lesson/LessonHome.vue';
 import LessonWrite from '../pages/lesson/LessonWrite.vue';
 
 import LessonDetail from '../pages/lesson/LessonDetail.vue';
-import reserHome from '../pages/reservation/reser.vue';
+import ReserHome from '../pages/reservation/ReserHome.vue';
+import ReserDetail from '../pages/reservation/ReserDetail.vue';
+import ReserDetail2 from '../pages/reservation/ReserDetail2.vue';
 
 
 const routes = [
@@ -18,7 +20,10 @@ const routes = [
   // 강습 상세페이지
   { path: "/lesson/detail", component: LessonDetail},
   // 예약 메인페이지
-  { path: "/reservation", component: reserHome}
+  { path: "/reservation", component: ReserHome},
+  // 예약 상세페이지
+  { path: "/reservation/detail", component: ReserDetail, name: 'ReserDetail'},
+  { path: "/reservation/detail2", component: ReserDetail2}
 ];
 
 const router = createRouter({

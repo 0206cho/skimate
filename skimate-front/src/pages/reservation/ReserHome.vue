@@ -84,14 +84,14 @@
               </v-card-text>
              </v-col>
              <v-col cols="1" class="mt-8 text-md-left" style="padding-right: 0px;">
-                  <v-catd-text style="font-size: larger;">대인</v-catd-text>
+                  <v-catd-text style="font-size: larger;">스키</v-catd-text>
                 </v-col>
                 <v-col cols="2" style="padding-left: 0px;" >
                   <v-text-field class="mt-5 ml-2" variant="outlined" ></v-text-field>
 
                 </v-col>
                 <v-col cols="1" class="mt-8 text-md-left" style="padding-right: 0px;">
-                  <v-catd-text style="font-size: larger;">소인</v-catd-text>
+                  <v-catd-text style="font-size: larger;">보드</v-catd-text>
                 </v-col>
                 <v-col cols="2" style="padding-left: 0px;" >
                   <v-text-field class="mt-5 ml-2" variant="outlined" ></v-text-field>
@@ -116,7 +116,7 @@
                 <h3>원</h3>
               </v-col>
               <v-col cols="3" class="pt-7">
-                <v-btn color="#BFDDF9" to="/lesson/write">예약</v-btn>
+                <v-btn color="#BFDDF9" to="/reservation/detail">예약</v-btn>
               </v-col>
             </v-row>
           </v-col>
@@ -139,8 +139,8 @@ export default {
         this.loading = false
         this.loaded = true
       }, 2000)
-    },
-  },
+    }
+  }
 };
 </script>
 
