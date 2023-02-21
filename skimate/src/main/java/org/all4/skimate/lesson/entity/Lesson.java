@@ -2,7 +2,7 @@ package org.all4.skimate.lesson.entity;
 
 import lombok.Getter;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.*;
 
