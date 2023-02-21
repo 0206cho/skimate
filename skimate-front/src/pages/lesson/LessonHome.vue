@@ -4,15 +4,15 @@
     <v-row>
       <v-col cols="2"></v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">|
         </h1>
       </v-col>
       <v-col cols="6">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">강&nbsp;&nbsp;습
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">강&nbsp;&nbsp;습
         </h1>
       </v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">|
         </h1>
       </v-col>
       <v-col cols="2"></v-col>
@@ -42,18 +42,46 @@
           </v-col>
         </v-row>
 
-        <v-data-table :headers="headers" :items="desserts" item-value="name" class="elevation-1">
-          <template v-slot:item="{ item }">
-            <tr>
-              <td>{{ item.columns.name }}</td>
-              <td>{{ item.columns.calories }}</td>
-              <td>{{ item.columns.fat }}</td>
-              <td>{{ item.columns.carbs }}</td>
-              <td>{{ item.columns.protein }}</td>
-              <td>{{ item.columns.iron }}</td>
-            </tr>
-          </template>
-        </v-data-table>
+          <v-table fixed-header height="400px">
+            <thead>
+              <tr>
+                <th class="text-center" style="font-weight: bold; background-color: #BFDDF9;">
+                  순번
+                </th>
+                <th class="text-center" style="font-weight: bold; background-color: #BFDDF9;">
+                  제목
+                </th>
+                <th class="text-center" style="font-weight: bold; background-color: #BFDDF9;">
+                  구분
+                </th>
+                <th class="text-center" style="font-weight: bold; background-color: #BFDDF9;">
+                  강습일
+                </th>
+                <th class="text-center" style="font-weight: bold; background-color: #BFDDF9;">
+                  게시일
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center" v-for="item in desserts" :key="item.name">
+                <td>{{ item.no }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.lessonDate }}</td>
+                <td>{{ item.date }}</td>
+              </tr>
+            </tbody>
+          </v-table>
+
+          <div class="album py-5 bg-light">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col" v-for="(item, idx) in state.items" :key="idx">
+                  <card :item="item"> </card>
+                </div>
+              </div>
+            </div>
+          </div>
 
       </v-col>
       <v-col cols="2"></v-col>
@@ -62,109 +90,94 @@
 </template>
   
 <script>
+import axios from "axios";
+import { reactive } from "@vue/reactivity";
 export default {
   name: "LessonHome",
-  data: () => ({
-      loaded: false,
-      loading: false,
-      selected: [],
-      headers: [
-        {
-          title: 'Dessert (100g serving)',
-          align: 'start',
-          sortable: false,
-          key: 'name',
-        },
-        { title: 'Calories', key: 'calories' },
-        { title: 'Fat (g)', key: 'fat' },
-        { title: 'Carbs (g)', key: 'carbs' },
-        { title: 'Protein (g)', key: 'protein' },
-        { title: 'Iron (%)', key: 'iron' },
-      ],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: 1,
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: 1,
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: 7,
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: 8,
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: 16,
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: 0,
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: 2,
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: 45,
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: 22,
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: 6,
-        },
-      ],
-
-    }),
+  setup(){
+    const state = reactive({
+      items: [],
+    });
+    axios.get("/api/lesson").then((res) => {
+      state.items = res.data;
+    });
+  },
+  data () {
+      return {
+        desserts: [
+          {
+            no: 10,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 9,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 8,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 7,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 6,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 5,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 4,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 3,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 2,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+          {
+            no: 1,
+            title: '스키 강습 합니다.',
+            category: '스키',
+            lessonDate: '2022-02-21',
+            date: '2022-02-20'
+          },
+        ],
+      }
+    },
 
     methods: {
       onClick () {

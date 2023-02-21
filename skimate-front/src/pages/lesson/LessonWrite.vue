@@ -33,11 +33,14 @@
               <v-card-text class="mx-5 my-5" style="font-size: medium; font-weight: bold; color:#053D68">
                 강습 종류
               </v-card-text>
-              <v-card-text class="mx-5 mt-7" style="font-size: medium; font-weight: bold; color:#053D68">
+              <v-card-text class="mx-5 my-5" style="font-size: medium; font-weight: bold; color:#053D68">
                 강습 비용
               </v-card-text>
               <v-card-text class="mx-5 mt-7" style="font-size: medium; font-weight: bold; color:#053D68">
-                기타 사항
+                제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 
+              </v-card-text>
+              <v-card-text class="mx-5 mt-7" style="font-size: medium; font-weight: bold; color:#053D68">
+                내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용
               </v-card-text>
             </v-col>
             <v-col cols="10">
@@ -52,11 +55,12 @@
                   <v-text-field class="mt-5 mr-7" variant="outlined" type="date"></v-text-field>
                 </v-col>
               </v-row>
-              <v-radio-group inline class="mb-4 ml-4">
+              <v-radio-group inline class="mb-3 ml-4">
                 <v-radio label="스키" value="스키" color="indigo-darken-3" class="mr-5"></v-radio>
                 <v-radio label="보드" value="보드" color="indigo-darken-3"></v-radio>
               </v-radio-group>
               <v-text-field class="mx-7" variant="outlined" type="number" suffix="원"></v-text-field>
+              <v-text-field class="mx-7" variant="outlined" type="text"></v-text-field>
               <v-textarea class="mx-7" auto-grow variant="outlined" rows="3" row-height="25" rounded="true"></v-textarea>
             </v-col>
 

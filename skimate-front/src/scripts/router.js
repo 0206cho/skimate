@@ -6,6 +6,10 @@ import LessonWrite from '../pages/lesson/LessonWrite.vue';
 
 import LessonDetail from '../pages/lesson/LessonDetail.vue';
 import LessonPay from '../pages/lesson/LessonPay.vue';
+<<<<<<< Updated upstream
+=======
+// import reserHome from '../pages/reservation/reser.vue';
+>>>>>>> Stashed changes
 import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
 
