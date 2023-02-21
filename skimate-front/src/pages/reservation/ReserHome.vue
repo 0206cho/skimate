@@ -215,8 +215,27 @@
 </template>
 
 <script>
+import axios from "axios";
+import { reactive } from "@vue/reactivity";
+
 export default {
   name: "LessonHome",
+
+  setup(){
+    const state = reactive({
+      items: [],
+    });
+    axios.get("http://localhost:8080/api/lesson/list",{
+        headers : {
+          'Authorization' : 'Bearer ' + sessionStorage.getItem('id')
+        }
+      }).then((res) => {
+        console.log(res.data);
+        state.items = res.data;
+      });
+    return {state}
+  },
+
   data() {
     return {
       num1: 0,
