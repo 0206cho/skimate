@@ -4,15 +4,15 @@
     <v-row>
       <v-col cols="2"></v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">|
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
         </h1>
       </v-col>
       <v-col cols="6">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">강&nbsp;&nbsp;습
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">강&nbsp;&nbsp;습
         </h1>
       </v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">|
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
         </h1>
       </v-col>
       <v-col cols="2"></v-col>
@@ -63,25 +63,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="text-center" v-for="item in desserts" :key="item.name">
-                <td>{{ item.no }}</td>
-                <td>{{ item.title }}</td>
-                <td>{{ item.category }}</td>
-                <td>{{ item.lessonDate }}</td>
-                <td>{{ item.date }}</td>
+              <tr class="text-center" v-for="(item, idx) in state.lesson" :key="idx">
+                <td>{{ item.lesson_id }}</td>
+                <td>{{ item.lesson_title }}</td>
+                <td>{{ item.lesson_category }}</td>
+                <td>{{ item.lesson_date }}</td>
+                <td>{{ item.lesson_lsdate }}</td>
               </tr>
             </tbody>
           </v-table>
 
-          <div class="album py-5 bg-light">
-            <div class="container">
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col" v-for="(item, idx) in state.items" :key="idx">
-                  <card :item="item"> </card>
-                </div>
-              </div>
-            </div>
-          </div>
 
       </v-col>
       <v-col cols="2"></v-col>
@@ -96,11 +87,19 @@ export default {
   name: "LessonHome",
   setup(){
     const state = reactive({
-      items: [],
+      lesson: [],
     });
-    axios.get("/api/lesson").then((res) => {
-      state.items = res.data;
-    });
+    axios.get("http://localhost:8080/api/lesson/list",{
+        headers : {
+          'Authorization' : 'Bearer ' + sessionStorage.getItem('id')
+        }
+      }).then((res) => {
+        console.log(res.data);
+        
+        state.lesson = res.data;
+        console.log(state.lesson);
+      });
+    return {state}
   },
   data () {
       return {
