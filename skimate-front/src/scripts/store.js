@@ -8,20 +8,36 @@ const store = createStore({
       account: {
         id: 0,
       },
-      Name: "홍길동",
-      state: {
-        name: '',
-        job: ''
-      },
+      bigPerson: 0,
+      smallPerson: 0,
+      board: 0,
+      ski: 0,
+      tot: 0
     };
   },
+  // state: {
+  //   name: '',
+  //   job: ''
+  // },
 
   mutations: {
     setAccount(state, payload) {
       state.account.id = payload;
     },
-    setName(state, data){
-      state.name = data;
+    setName(state, big){
+      state.bigPerson = big;
+    },
+    setSmall(state, small){
+      state.smallPerson = small;
+    },
+    setBoard(state, board){
+      state.board = board;
+    },
+    setSki(state, ski){
+      state.ski = ski;
+    },
+    setTotal(state, tot){
+      state.tot = tot;
     }
   },
 });
