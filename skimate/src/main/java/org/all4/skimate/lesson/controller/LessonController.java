@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class LessonController {
 	
+	// 연동 확인
 //	@GetMapping("/api/lesson")
 //    public List<String> getItems() {
 //        List<String> items = new ArrayList<>();
@@ -24,6 +25,7 @@ public class LessonController {
 //        return items;
 //    }
 	
+	// DB 값 확인
 	@Autowired
 	LessonRepository lessonRepository;
 	
