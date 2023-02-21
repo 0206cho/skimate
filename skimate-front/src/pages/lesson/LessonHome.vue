@@ -98,9 +98,15 @@ export default {
     const state = reactive({
       items: [],
     });
-    axios.get("/api/lesson").then((res) => {
-      state.items = res.data;
-    });
+    axios.get("http://localhost:8080/api/lesson",{
+        headers : {
+          'Authorization' : 'Bearer ' + sessionStorage.getItem('id')
+        }
+      }).then((res) => {
+        console.log(res.data);
+        state.items = res.data;
+      });
+    return {state}
   },
   data () {
       return {

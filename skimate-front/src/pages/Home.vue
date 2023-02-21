@@ -13,15 +13,6 @@
 
 export default {
   name: "Home",
-  setup() {
-    const state = reactive({
-      items: [],
-    });
-    axios.get("/api/items").then((res) => {
-      state.items = res.data;
-    });
-    return { state };
-  },
 };
 </script>
 
