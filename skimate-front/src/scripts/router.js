@@ -1,20 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/Home";
+import Main from "@/pages/Main"
 import Login from "@/pages/Login";
 import LessonHome from '../pages/lesson/LessonHome.vue';
 import LessonWrite from '../pages/lesson/LessonWrite.vue';
 
 import LessonDetail from '../pages/lesson/LessonDetail.vue';
 import LessonPay from '../pages/lesson/LessonPay.vue';
-<<<<<<< Updated upstream
-=======
-// import reserHome from '../pages/reservation/reser.vue';
->>>>>>> Stashed changes
+
 import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
 
 const routes = [
-  { path: "/", component: Home },
+  { path: "/", name : 'Main', component: Main},
+  { path: "/ski", name : 'ski' ,component: Home },
   { path: "/login", component: Login },
   // 강습 메인페이지
   { path: "/lesson", component: LessonHome},

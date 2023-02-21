@@ -1,14 +1,13 @@
 <template>
-  <div class="card shadow-sm">
-    <img :src="item.imgPath" alt="" />
+  <div class="card shadow-sm" @click="clickPage()">
+    <img :src="item.skiImgUrl" alt="" class="img" />
     <div class="card-body">
       <p class="card-text">
-        {{ item.name }}
+        {{ item.skiName }}
       </p>
       <div class="d-flex justify-content-between align-items-center">
-        <button class="btn btn-primary">Buy</button>
         <small class="text-muted">
-          {{ item.price }}
+          {{ item.skiAddress }}
         </small>
       </div>
     </div>
@@ -16,10 +15,23 @@
 </template>
 
 <script>
+import store from '@/scripts/store';
+import router from '@/scripts/router';
 export default {
   name: "Card",
   props: {
     item: Object,
+  },
+  setup(props) {
+    const clickPage = () =>{
+      store.commit('setSkiRoungeName', props.item.skiName)
+      router.push({
+        path : "/ski"
+      })
+
+    }
+
+    return {clickPage}
   },
 };
 </script>
@@ -30,5 +42,6 @@ export default {
   width: 100%;
   height: 250px;
   background-size: cover;
+  background-position: center;
 }
 </style>

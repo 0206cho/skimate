@@ -12,7 +12,7 @@
               </v-col>
 
               <v-col cols="6">
-                <a class="navbar-brand pr-5" href="/" style="font-family: 'Title_bold'; color: #053D68;">비발디파크</a>
+                <a class="navbar-brand pr-5" href="/" style="font-family: 'Title_bold'; color: #053D68;">{{ $store.state.skiRounge.skiName }}</a>
                 <a class="navbar-brand px-5" href="/reservation" style="font-family: 'Title_font'">예약</a>
                 <a class="navbar-brand px-5" href="/lesson" style="font-family: 'Title_font'">강습</a>
                 <a class="navbar-brand px-5" href="/" style="font-family: 'Title_font'">공지사항</a>
@@ -27,6 +27,7 @@
                       <router-link to="/login" class="text-black" v-if="!$store.state.account.id" style="text-decoration: none;">
                         <v-icon dark size="40px">mdi-account</v-icon>
                       </router-link>
+                      <a to="/login" class="text-white" @click="logout()" v-else>Logout</a>
                     </li>
                   </ul>
                 </div>
@@ -40,20 +41,19 @@
 </template>
 
 <script>
-import store from "@/scripts/store";
-import router from "@/scripts/router";
+import store from '@/scripts/store';
+import router from '@/scripts/router';
 export default {
   name: "Header",
-  setup() {
-    const logout = () => {
-      store.commit("setAccount", 0);
-      sessionStorage.removeItem("id");
-      router.push({ path: "/" });
-    };
 
-    return {
-      logout,
-    };
+  setup(){
+    const logout = () =>{
+      store.commit('setAccesToken', "")
+      sessionStorage.removeItem("id")
+      router.push({path:"/"})
+    }
+
+    return {logout}
   },
   // 로고 이미지
   data : ()=>({

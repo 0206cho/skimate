@@ -1,6 +1,6 @@
 <template>
   <div class="form-signin w-100 m-auto">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">로그인</h1>
 
     <div class="form-floating">
       <input
@@ -8,9 +8,9 @@
         class="form-control"
         id="floatingInput"
         placeholder="name@example.com"
-        v-model="state.form.email"
+        v-model="state.form.memberId"
       />
-      <label for="floatingInput">Email address</label>
+      <label for="floatingInput">사용자 ID</label>
     </div>
     <div class="form-floating">
       <input
@@ -18,40 +18,42 @@
         class="form-control"
         id="floatingPassword"
         placeholder="Password"
-        v-model="state.form.password"
+        v-model="state.form.memberPw"
       />
-      <label for="floatingPassword">Password</label>
+      <label for="floatingPassword">비밀번호</label>
     </div>
 
-    <div class="checkbox mb-3">
-      <label> <input type="checkbox" value="remember-me" /> Remember me </label>
+    <div>
+      <button class="w-100 btn btn-lg btn-primary" @click="submit()">
+        로그인
+      </button>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" @click="submit()">
-      Sign in
-    </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
+
+    <div>
+      <button class="w-100 btn btn-lg btn-primary">회원가입</button>
+    </div>
   </div>
 </template>
 
 <script>
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
-import store from "@/scripts/store";
 import router from "@/scripts/router";
+import store from "@/scripts/store";
 export default {
   setup() {
     const state = reactive({
       form: {
-        email: "",
-        password: "",
+        memberId: "",
+        memberPw: "",
       },
     });
 
     const submit = () => {
       axios
-        .post("/api/account/login", state.form)
+        .post("http://localhost:8080/login", state.form)
         .then((res) => {
-          store.commit("setAccount", res.data);
+          store.commit("setAccesToken", res.data);
           sessionStorage.setItem("id", res.data);
           console.log(res.data);
           router.push({ path: "/" });

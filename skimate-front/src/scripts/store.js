@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import createPersistedState from 'vuex-persistedstate'
 
 const store = createStore({
 
@@ -6,7 +7,10 @@ const store = createStore({
   state() {
     return {
       account: {
-        id: 0,
+        memberId : ""
+      },
+      skiRounge: {
+        skiName : ""
       },
       bigPerson: 0,
       smallPerson: 0,
@@ -21,8 +25,11 @@ const store = createStore({
   // },
 
   mutations: {
-    setAccount(state, payload) {
-      state.account.id = payload;
+    setAccesToken(state, payload) {
+      state.account.memberId = payload;
+    },
+    setSkiRoungeName(state, skiName) {
+      state.skiRounge.skiName = skiName;
     },
     setName(state, big){
       state.bigPerson = big;
@@ -40,6 +47,11 @@ const store = createStore({
       state.tot = tot;
     }
   },
+  plugins:[
+    createPersistedState({
+      
+    })
+  ]
 });
 
 export default store;

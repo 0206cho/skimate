@@ -1,18 +1,17 @@
 <template>
-  <Header></Header>
+  <Header v-if="$route.name !== 'Main'"></Header>
 
   <RouterView />
 
-  <Footer></Footer>
+  <Footer v-if="$route.name !== 'Main'"></Footer>
 </template>
 
 <script>
-import axios from "axios";
+
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import store from "./scripts/store";
-import { useRoute } from "vue-router";
-import { watch } from "@vue/runtime-core";
+
 
 export default {
   name: "App",
@@ -21,19 +20,14 @@ export default {
     Footer,
   },
 
-  setup() {
-    const check = () => {
-      axios.get("/api/account/check").then(({ data }) => {
-        store.commit("setAccount", data || 0);
-      });
-    };
+  setup(){
+    const id = sessionStorage.getItem("id");
 
-    const route = useRoute();
+    if(id){
+      store.commit("setAccesToken", id);
+    }
+  }
 
-    watch(route, () => {
-      check();
-    });
-  },
 };
 </script>
 
