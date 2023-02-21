@@ -19,6 +19,12 @@ target/
 *.iml
 *.ipr
 
+
+### macOS template
+*.DS_Store
+.AppleDouble
+.LSOverride
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

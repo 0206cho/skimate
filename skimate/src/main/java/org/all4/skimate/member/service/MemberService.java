@@ -32,6 +32,7 @@ public class MemberService {
                 .role(Role.USER)
                 .build();
 
+
         member.passwordEncode(passwordEncoder);
         memberRepository.save(member);
     }
