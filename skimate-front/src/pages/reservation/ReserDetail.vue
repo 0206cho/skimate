@@ -53,13 +53,13 @@
                   <p>대인</p>
                 </v-col>
                 <v-col cols="5">
-                  <p></p>
+                  <p>{{ $store.state.bigPerson }}</p>
                 </v-col>
                 <v-col cols="1">
                   <p>소인</p>
                 </v-col>
                 <v-col cols="5">
-                  <p> </p>
+                  <p>{{ $store.state.smallPerson }} </p>
                 </v-col>
               </v-row>
               <v-row class="my-11">
@@ -67,13 +67,13 @@
                   <p>스키</p>
                 </v-col>
                 <v-col cols="5">
-                  <p></p>
+                  <p>{{ $store.state.ski }}</p>
                 </v-col>
                 <v-col cols="1">
                   <p>보드</p>
                 </v-col>
                 <v-col cols="5">
-                  <p></p>
+                  <p>{{ $store.state.board }}</p>
                 </v-col>
               </v-row>
 
@@ -88,7 +88,10 @@
     <v-row>
     <v-col cols="9"></v-col>
     <v-col cols="3">
-      <v-btn color="#BFDDF9" to="/lesson/write">결제</v-btn>
+      <h3>
+      {{ $store.state.tot }}
+      </h3>
+      <v-btn color="#BFDDF9">결제</v-btn>
 
     </v-col>
       </v-row>
@@ -96,7 +99,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'ReserDetail',
          setup() {
