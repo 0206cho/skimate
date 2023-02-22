@@ -24,7 +24,7 @@ export default {
   },
   setup(props) {
     const clickPage = () =>{
-      store.commit('setSkiRoungeName', props.item.skiName)
+      store.commit('setSkiRoungeName', props.item)
       router.push({
         path : "/ski"
       })

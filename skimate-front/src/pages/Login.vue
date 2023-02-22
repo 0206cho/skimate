@@ -28,15 +28,31 @@
         로그인
       </button>
     </div>
+    <div>
+      <a :href="naverurl">
+        <img src="/img/naverLogin.png" class="sociaLogin">
+      </a>
+    </div>
+    <div>
+      <a :href="kakaourl">
+        <img src="/img/kakaoLogin.png" class="sociaLogin">
+      </a>
+    </div>
+    <div>
+      <a :href="googleUrl">
+        <img src="/img/googleLogin.png" class="sociaLogin">
+      </a>
+    </div>
 
     <div>
-      <button class="w-100 btn btn-lg btn-primary">회원가입</button>
+      <button class="w-100 btn btn-lg btn-primary" @click="joinForm()">회원가입</button>
     </div>
   </div>
 </template>
 
 <script>
 import { reactive } from "@vue/reactivity";
+import { ref } from "vue";
 import axios from "axios";
 import router from "@/scripts/router";
 import store from "@/scripts/store";
@@ -49,6 +65,10 @@ export default {
       },
     });
 
+    const joinForm = () =>{
+      router.push({path : "/join"});
+    }
+    
     const submit = () => {
       axios
         .post("http://localhost:8080/login", state.form)
@@ -56,7 +76,7 @@ export default {
           store.commit("setAccesToken", res.data);
           sessionStorage.setItem("id", res.data);
           console.log(res.data);
-          router.push({ path: "/" });
+          router.push({ path: "/ski" });
           window.alert("login");
         })
         .catch(() => {
@@ -64,15 +84,30 @@ export default {
         });
     };
 
+  
+    
+    const naverurl = ref("http://localhost:8080/oauth2/authorization/naver?redirect_url=http://localhost:3000/oauth/redirect");
+    const kakaourl = ref("http://localhost:8080/oauth2/authorization/kakao?redirect_url=http://localhost:3000/oauth/redirect");
+    const googleUrl = ref("http://localhost:8080/oauth2/authorization/google?redirect_url=http://localhost:3000/oauth/redirect");
+
+
     return {
       state,
       submit,
+      naverurl,
+      kakaourl,
+      googleUrl,
+      joinForm
     };
   },
+  
 };
 </script>
 
 <style scoped>
+.sociaLogin{
+  max-width: 250px;
+}
 .form-signin {
   max-width: 330px;
   padding: 15px;

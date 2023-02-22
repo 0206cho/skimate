@@ -26,6 +26,7 @@
       const state = reactive({
         items: [],
       });
+      
       axios.get("http://localhost:8080/api/skiRounge").then((res) => {
         console.log(res.data);
         state.items = res.data;
