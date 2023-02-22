@@ -10,10 +10,12 @@ import LessonPay from '../pages/lesson/LessonPay.vue';
 import Join from '../pages/Join.vue'
 import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
+import InfoUpdate from "../pages/MemberInfoUpdate.vue";
 
 const routes = [
   { path: "/", name : 'Main', component: Main},
   { path: "/oauth/redirect", component: SocialRedirect },
+  { path: "/memberInfoUdate", component: InfoUpdate },
   { path: "/ski", name : 'ski' ,component: Home },
   { path: "/login", component: Login },
   { path: "/join", component: Join },
