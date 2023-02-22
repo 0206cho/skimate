@@ -59,24 +59,15 @@
               </v-col>
             </v-row>
             <div>
-              
             </div>
-            <div>
-              
-            </div>
-            <div>
-              
-            </div>
-        
           </div>
         </v-col>
         <v-col cols="3"></v-col>
       </v-row>
-      
     </v-col>
     <v-col cols="1"></v-col>
   </v-row>
-  
+  <div style="height: 140px;"></div>
 </template>
 
 <script>
