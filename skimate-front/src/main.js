@@ -5,9 +5,6 @@ import { loadFonts } from './plugins/webfontloader'
 import store from "./scripts/store";
 import router from "./scripts/router";
 
-
-import 'vue3-easy-data-table/dist/style.css';
-
 loadFonts()
 
 createApp(App)
@@ -15,4 +12,3 @@ createApp(App)
   .use(store)
   .use(router)
   .mount('#app')
-

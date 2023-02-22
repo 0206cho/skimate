@@ -4,15 +4,15 @@
     <v-row>
       <v-col cols="2"></v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">|
         </h1>
       </v-col>
       <v-col cols="6">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">강&nbsp;&nbsp;습
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">강&nbsp;&nbsp;습
         </h1>
       </v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">|
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">|
         </h1>
       </v-col>
       <v-col cols="2"></v-col>
@@ -72,8 +72,6 @@
               </tr>
             </tbody>
           </v-table>
-
-
       </v-col>
       <v-col cols="2"></v-col>
     </v-row>

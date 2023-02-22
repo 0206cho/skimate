@@ -118,7 +118,7 @@ export default {
         category: "스키",
         startDate: "",
         endDate: "",
-        skiName: this.store.state.skiRounge.skiName,
+        // skiName: this.store.state.skiRounge.skiName,
       },
     });
 
