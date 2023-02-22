@@ -134,7 +134,7 @@
       <v-col cols="9"></v-col>
       <v-col cols="3">
         <h3>
-          {{ price }}
+          {{ storeTot }}
         </h3>
         <v-btn color="#BFDDF9" @click="submit">결제</v-btn>
       </v-col>
@@ -145,25 +145,36 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
+import { computed } from "vue";
+import { useStore } from "vuex";
 const { IMP } = window;
 console.log(new Date().getTime());
 export default {
   name: "ReserDetail",
-  setup() {
 
-    const state = reactive({
+  setup() {
+    const store = useStore();
+    const storeBigPerson = computed(() => store.state.bigPerson);
+    const storeSmallPerson = computed(() => store.state.smallPerson);
+    const storeSki = computed(() => store.state.ski);
+    const storeBoard = computed(() => store.state.board);
+    const storeSkiId = computed(() => store.state.skiRounge.skiId);
+    const storeTot = computed(() => store.state.tot);
+    console.log("스키 아이디 : "+ storeSkiId.value);
+    const states = reactive({
       form: {
-        price : 300,
-        bigPerson : this.$store.state.bigPerson,
-        smallPerson : this.$store.state.smallPerson,
-        ski: this.$store.state.ski,
-        board: this.$store.state.board,
-        
+        price: storeTot,
+        bigPerson: storeBigPerson,
+        smallPerson : storeSmallPerson,
+        ski: storeSki,
+        board: storeBoard,
+        skiId: storeSkiId
+
       },
     });
 
     const submit = () => {
-      axios.post("http://localhost:8080/api/cash/reservation", state.form, {
+      axios.post("http://localhost:8080/api/cash/reservation", states.form, {
           headers: {
             Authorization: "Bearer " + sessionStorage.getItem("id"),
           },
@@ -177,7 +188,7 @@ export default {
     };
 
     return {
-      state,
+      states,
       submit,
     };
 
@@ -185,8 +196,7 @@ export default {
   data() {
     return {
       //price: this.$store.state.tot
-      price: 200,
-
+      //price: ,
     };
   },
   methods: {
