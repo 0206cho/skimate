@@ -32,6 +32,6 @@ public class Lesson {
 	private String lesson_content; // 내 용
 	
 	@Column(length = 500)
-	private Date lesson_date; // 게시 일
+	private Date lesson_date; // 게시일
 
 }
