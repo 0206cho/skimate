@@ -36,4 +36,9 @@ public class MemberService {
         member.passwordEncode(passwordEncoder);
         memberRepository.save(member);
     }
+
+    public Member findByTokenMember(String memberId){
+        Member member = memberRepository.findByMemberId(memberId).orElseThrow(() -> new IllegalArgumentException("xxxx"));
+        return member;
+    }
 }
