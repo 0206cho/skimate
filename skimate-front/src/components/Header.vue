@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { reactive } from "@vue/reactivity";
 import store from '@/scripts/store';
 import router from '@/scripts/router';
 export default {
@@ -53,7 +54,13 @@ export default {
       router.push({path:"/"})
     }
 
-    return {logout}
+    const state = reactive({
+      loginId : sessionStorage.getItem('id')
+    });
+
+
+
+    return {logout, state}
   },
   // 로고 이미지
   data : ()=>({
