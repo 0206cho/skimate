@@ -21,5 +21,11 @@ public class CashDTO {
 	
 	private int board;
 	
-	private int skiId;
+	private Long skiId;
+
+	public String calPerson(CashDTO dto) {
+		int result = 0;
+		result = dto.getBigPerson() + dto.getSmallPerson();
+		return String.valueOf(result);
+	}
 }
