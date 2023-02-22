@@ -19,7 +19,7 @@
   export default {
     components: { Card },
   
-    name: "Home",
+    name: "Main",
     setup() {
       
 

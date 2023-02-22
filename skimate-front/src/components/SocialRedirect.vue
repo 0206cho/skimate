@@ -10,8 +10,13 @@ import store from '@/scripts/store';
 export default {
     created() {
         const token = this.$route.query.token
+        const role = this.$route.query.role
 
-        if(token){
+        if(token && role=="GUEST"){
+            store.commit('setAccesToken', token);
+            sessionStorage.setItem('id', token);
+            router.push({path:'/memberInfoUdate'})
+        }else if(token && role=="USER"){
             store.commit('setAccesToken', token);
             sessionStorage.setItem('id', token);
             window.alert('login');

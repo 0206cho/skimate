@@ -1,27 +1,7 @@
 <template>
     <div class="form-signin w-100 m-auto">
-    <h1 class="h3 mb-3 fw-normal">회원가입</h1>
+    <h1 class="h3 mb-3 fw-normal">소셜 회원 추가 정보 입력</h1>
 
-    <div class="form-floating">
-      <input
-        type="text"
-        class="form-control"
-        id="floatingInput"
-        placeholder="name@example.com"
-        v-model="state.form.memberId"
-      />
-      <label for="floatingInput">사용자 ID</label>
-    </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-        v-model="state.form.memberPw"
-      />
-      <label for="floatingPassword">비밀번호</label>
-    </div>
     <div class="form-floating">
       <input
         type="text"
@@ -68,7 +48,11 @@ export default {
     });
 
     const submit = () => {
-        axios.post("http://localhost:8080/sign-up",state.form)
+        axios.post("http://localhost:8080/memberInfoUpdate",state.form,{
+          headers : {
+            "Authorization" : "Bearer " + sessionStorage.getItem('id') 
+          }
+        })
         .then((res)=>{
             console.log(res.data);
             router.push({path : "/ski"})
