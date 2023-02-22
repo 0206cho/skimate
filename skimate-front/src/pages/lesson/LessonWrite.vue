@@ -101,7 +101,7 @@
     </v-row>
   </v-container>
 </template>
-  
+
 <script>
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
