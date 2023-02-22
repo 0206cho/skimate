@@ -14,8 +14,11 @@ import org.all4.skimate.member.domain.Member;
 import org.all4.skimate.member.repository.MemberRepository;
 import org.all4.skimate.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,4 +84,18 @@ public class LessonController {
 			System.out.println("등록 에러");
 		}
 	}
+
+	// 상세페이지 id 넘기기
+	@GetMapping("/api/lesson/detail/{lessonId}")
+	public void detail(@PathVariable("lessonId") int lessonId) {
+		System.out.println(">>>>>>>>> id : "+ lessonId);		
+	}
+	
+//	// 삭제
+//	@DeleteMapping("/api/lesson/delete/{lessonId}")
+//    public void removeLesson(@PathVariable("lessonId") int lessonId) {
+//        Lesson lesson = lessonRepository.findByLessonId(lessonId);
+//
+//        lessonRepository.delete(lesson);
+//    }
 }
