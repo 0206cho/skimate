@@ -10,20 +10,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
+@Setter
 @Getter
 @Entity
 @Table(name="cash")
 public class Cash {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int cash_num; // 캐시번호
+	private int cashNum; // 캐시번호
 	
 	@Column(length = 500)
-	private int cash_price; // 가격
+	private int cashPrice; // 가격
 
 	@Column(length = 500)
-	private String cash_category; // 캐시분류
+	private String cashCategory; // 캐시분류
 
 	
 }
