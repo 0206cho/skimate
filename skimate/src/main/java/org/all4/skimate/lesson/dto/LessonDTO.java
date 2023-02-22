@@ -15,6 +15,7 @@ public class LessonDTO {
 	private String category;
 	private String startDate;
 	private String endDate;
+	private String skiName;
 	private int price;
 	
 }
