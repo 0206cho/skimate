@@ -57,7 +57,7 @@
                 </v-col>
               </v-row>
               <v-radio-group inline class="mb-3 ml-4" v-model="state.form.category">
-                <v-radio label="스키" value="스키" color="indigo-darken-3" class="mr-5"></v-radio>
+                <v-radio label="스키" value="스키" color="indigo-darken-3" class="mr-5" checked=""></v-radio>
                 <v-radio label="보드" value="보드" color="indigo-darken-3"></v-radio>
               </v-radio-group>
               <v-text-field class="mx-7" v-model="state.form.price" variant="outlined" type="number"
@@ -106,6 +106,7 @@
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
 import router from "@/scripts/router";
+
 export default {
   name: "LessonHome",
   setup() {
@@ -114,9 +115,10 @@ export default {
         title: "",
         price: "",
         content: "",
-        category: "",
+        category: "스키",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        skiName: this.store.state.skiRounge.skiName,
       },
     });
 
