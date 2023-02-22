@@ -2,14 +2,12 @@
   <div class="card shadow-sm" @click="clickPage()">
     <img :src="item.skiImgUrl" alt="" class="img" />
     <div class="card-body">
-      <p class="card-text">
+      <p class="card-text" style="font-family:'Title_bold'; color: #053D68;">
         {{ item.skiName }}
       </p>
-      <div class="d-flex justify-content-between align-items-center">
-        <small class="text-muted">
+        <small class="card-text">
           {{ item.skiAddress }}
         </small>
-      </div>
     </div>
   </div>
 </template>
