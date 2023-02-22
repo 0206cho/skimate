@@ -22,7 +22,7 @@ public class MemberService {
         if(memberRepository.findByMemberId(memberDto.getMemberId()).isPresent()){
             throw new Exception("이미 존재하는 아이디입니다.");
         }
-
+        
         Member member = Member.builder()
                 .memberId(memberDto.getMemberId())
                 .memberPw(memberDto.getMemberPw())
