@@ -8,26 +8,12 @@
       <v-col cols="1">
         <h1
           class="pt-12 px-0"
-          style="
-            display: flex;
-            justify-content: center;
-            color: #053d68;
-            font-family: 'Title_bold';
-          "
-        >
-          |
-        </h1>
+          style="display: flex;justify-content: center;color: #053d68;font-family: 'Title_bold';">|</h1>
       </v-col>
       <v-col cols="6">
         <h1
           class="pt-12 px-0"
-          style="
-            display: flex;
-            justify-content: center;
-            color: #053d68;
-            font-family: 'Title_bold';
-          "
-        >
+          style=" display: flex;justify-content: center;color: #053d68;font-family: 'Title_bold';">
           결제
         </h1>
       </v-col>
@@ -93,7 +79,7 @@
 
             <v-col cols="10">
               <v-row class="my-9">
-                <div class="mx-10">2023 년 02 월 17 일</div>
+                <div class="mx-10">{{ $store.state.reserDate }}</div>
               </v-row>
               <v-row class="my-10">
                 <v-col cols="1">
