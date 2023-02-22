@@ -46,4 +46,11 @@ public class Member {
         this.refreshToken = updateRefreshToken;
     }
 
+    public void updateMemberInfo(MemberDto memberDto){
+        this.memberName = memberDto.getMemberName();
+        this.memberAddress = memberDto.getMemberAddress();
+        this.memberPhone = memberDto.getMemberPhone();
+        this.role = Role.USER;
+    }
+
 }
