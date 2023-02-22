@@ -37,7 +37,7 @@
                 강습 비용
               </v-card-text>
               <v-card-text class="mx-5 mt-7" style="font-size: medium; font-weight: bold; color:#053D68">
-                제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 
+                제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목
               </v-card-text>
               <v-card-text class="mx-5 mt-7" style="font-size: medium; font-weight: bold; color:#053D68">
                 내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용
@@ -96,7 +96,7 @@
     </v-row>
   </v-container>
 </template>
-  
+
 <script>
 export default {
   name: "LessonHome",
@@ -112,5 +112,5 @@ export default {
   },
 };
 </script>
-  
+
 <style scoped></style>
