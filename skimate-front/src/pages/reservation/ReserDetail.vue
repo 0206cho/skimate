@@ -109,6 +109,13 @@
                   <p>{{ $store.state.smallPerson }}</p>
                 </v-col>
               </v-row>
+
+              <v-row class="my-11">
+                <v-col cols="12">
+                  <p>{{ $store.state.skiRounge.skiName }}</p>
+                </v-col>
+              </v-row>
+
               <v-row class="my-11">
                 <v-col cols="1">
                   <p>스키</p>
@@ -131,12 +138,12 @@
     </v-row>
 
     <v-row>
-      <v-col cols="9"></v-col>
+      <v-col cols="7"></v-col>
+      <v-col cols="2">
+        <h3>{{ $store.state.tot }}원</h3>
+      </v-col>
       <v-col cols="3">
-        <h3>
-          {{ storeTot }}
-        </h3>
-        <v-btn color="#BFDDF9" @click="submit">결제</v-btn>
+        <v-btn color="#BFDDF9" @click="PaymentBtn">결제</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -147,50 +154,53 @@ import { reactive } from "@vue/reactivity";
 import axios from "axios";
 import { computed } from "vue";
 import { useStore } from "vuex";
+
+//console.log(new Date().getTime());
 const { IMP } = window;
-console.log(new Date().getTime());
+
+
 export default {
   name: "ReserDetail",
 
   setup() {
     const store = useStore();
-    const storeBigPerson = computed(() => store.state.bigPerson);
-    const storeSmallPerson = computed(() => store.state.smallPerson);
-    const storeSki = computed(() => store.state.ski);
-    const storeBoard = computed(() => store.state.board);
-    const storeSkiId = computed(() => store.state.skiRounge.skiId);
-    const storeTot = computed(() => store.state.tot);
-    console.log("스키 아이디 : "+ storeSkiId.value);
-    const states = reactive({
-      form: {
-        price: storeTot,
-        bigPerson: storeBigPerson,
-        smallPerson : storeSmallPerson,
-        ski: storeSki,
-        board: storeBoard,
-        skiId: storeSkiId
+            const storeBigPerson = computed(() => store.state.bigPerson);
+            const storeSmallPerson = computed(() => store.state.smallPerson);
+            const storeSki = computed(() => store.state.ski);
+            const storeBoard = computed(() => store.state.board);
+            const storeSkiId = computed(() => store.state.skiRounge.skiId);
+            const storeTot = computed(() => store.state.tot);
 
-      },
-    });
+            const states = reactive({
+              form: {
+                price: storeTot,
+                bigPerson: storeBigPerson,
+                smallPerson: storeSmallPerson,
+                ski: storeSki,
+                board: storeBoard,
+                skiId: storeSkiId,
+              },
+            });
 
-    const submit = () => {
-      axios.post("http://localhost:8080/api/cash/reservation", states.form, {
-          headers: {
-            Authorization: "Bearer " + sessionStorage.getItem("id"),
-          },
-        })
-        .then((res) => {
-          console.log("res : " + res)
-        })
-        .catch(() => {
-          window.alert("로그인 정보가 처리되지 않았습니다.");
-        });
-    };
 
-    return {
-      states,
-      submit,
-    };
+            const submit = () => {
+            axios.post("http://localhost:8080/api/cash/reservation", states.form, {
+                headers: {
+                  Authorization: "Bearer " + sessionStorage.getItem("id"),
+                },
+              })
+              .then((res) => {
+                console.log("res : " + res);
+              })
+              .catch(() => {
+                window.alert("로그인 정보가 처리되지 않았습니다.");
+              });
+              };
+
+            return {
+              states,
+              submit,
+            };
 
   },
   data() {
@@ -210,7 +220,8 @@ export default {
           pay_method: "card",
           merchant_uid: "merchant_" + new Date().getTime(),
           name: "예약 결제",
-          amount: this.price,
+          //amount: this.price,
+          amount: 300,
           buyer_email: "funidea_woo@naver.com",
           buyer_name: "테스터",
           buyer_tel: "010-8832-4280",
@@ -228,9 +239,12 @@ export default {
             msg += "\n결제 금액 : " + rsp.paid_amount;
             msg += "\n카드 승인번호 : " + rsp.apply_num;
             console.log("결제 성공");
+
+            this.submit()
+
           } else {
             msg = "결제에 실패하였습니다.";
-            msg += "\n에러내용 : " + rsp.error_msg;
+            msg += "\n실패 내용 : " + rsp.error_msg;
             console.log("결제 실패");
           }
           alert(msg);
