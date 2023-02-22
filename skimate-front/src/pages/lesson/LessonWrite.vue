@@ -106,10 +106,17 @@
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
 import router from "@/scripts/router";
+import { computed } from "vue";
+import { useStore } from "vuex";
 
 export default {
   name: "LessonHome",
   setup() {
+    // store 사용 시
+    const store = useStore();
+    const storeSkiId = computed(() => store.state.skiRounge.skiId);
+    const storeSkiName = computed(() => store.state.skiRounge.skiName);
+    console.log("스키 아이디 : "+ storeSkiId.value);
     const state = reactive({
       form: {
         title: "",
@@ -118,7 +125,8 @@ export default {
         category: "스키",
         startDate: "",
         endDate: "",
-        // skiName: this.store.state.skiRounge.skiName,
+        skiId: storeSkiId,
+        skiName: storeSkiName
       },
     });
 
@@ -132,6 +140,7 @@ export default {
         .then((res) => {
           console.log(">>>> form : " + state.form.title)
           console.log(">>>> res : " + res)
+          console.log(">>>> skiId : " + state.form.skiId)
           router.push({ path: "/lesson" });
           window.alert("등록되었습니다.");
         })

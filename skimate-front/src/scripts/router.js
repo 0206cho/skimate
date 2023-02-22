@@ -12,6 +12,8 @@ import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
 import InfoUpdate from "../pages/MemberInfoUpdate.vue";
 
+import Calendar from '../pages/lesson/Calendar.vue';
+
 const routes = [
   { path: "/", name : 'Main', component: Main},
   { path: "/oauth/redirect", component: SocialRedirect },
@@ -30,7 +32,9 @@ const routes = [
   // 예약 메인페이지
   { path: "/reservation", component: ReserHome},
   // 예약 상세페이지
-  { path: "/reservation/detail", component: ReserDetail, name: 'ReserDetail'}
+  { path: "/reservation/detail", component: ReserDetail, name: 'ReserDetail'},
+  // 풀캘린더 테스트
+  { path: "/calendar", component: Calendar},
 ];
 
 const router = createRouter({

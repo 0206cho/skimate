@@ -67,8 +67,8 @@
                 <td>{{ item.lesson_id }}</td>
                 <td>{{ item.lesson_title }}</td>
                 <td>{{ item.lesson_category }}</td>
-                <td>{{ item.lesson_date }}</td>
                 <td>{{ item.lesson_lsdate }}</td>
+                <td>{{ item.lesson_date }}</td>
               </tr>
             </tbody>
           </v-table>
