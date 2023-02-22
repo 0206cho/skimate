@@ -16,7 +16,8 @@ const store = createStore({
       smallPerson: 0,
       board: 0,
       ski: 0,
-      tot: 0
+      tot: 0,
+      reserDate: ""
     };
   },
   mutations: {
@@ -38,6 +39,9 @@ const store = createStore({
     },
     setSki(state, ski){
       state.ski = ski;
+    },
+    setReserDate(state, date){
+      state.reserDate = date;
     },
     setTotal(state, tot){
       state.tot = tot;

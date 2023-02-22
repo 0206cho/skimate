@@ -28,7 +28,7 @@
             font-family: 'Title_bold';
           "
         >
-          세부예약
+          예약
         </h1>
       </v-col>
       <v-col cols="1">
@@ -68,38 +68,12 @@
                     이용일자
                   </v-card-text>
                 </v-col>
-                <v-col cols="2" style="padding-right: 0px">
-                  <v-text-field
-                    class="mt-5 ml-7"
-                    variant="outlined"
-                  ></v-text-field>
+                <v-col cols="6">
+                  <v-text-field class="mt-5 ml-7" variant="outlined"
+                    type="date" v-model="reserDate"></v-text-field>
                 </v-col>
-                <v-col cols="1" class="mt-8 text-md-left" style="">
-                  <v-catd-text style="font-size: larger">년</v-catd-text>
-                </v-col>
-                <v-col cols="2" style="padding-right: 0px; padding-left: 0px">
-                  <v-text-field
-                    class="mt-5 ml-7"
-                    variant="outlined"
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="1"
-                  class="mt-8 text-md-left"
-                  style="padding-right: 0px; width: 10px"
-                >
-                  <v-catd-text style="font-size: larger; width: 10px"
-                    >월</v-catd-text
-                  >
-                </v-col>
-                <v-col cols="2" style="padding-right: 0px">
-                  <v-text-field
-                    class="mt-5 ml-7"
-                    variant="outlined"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="1" class="mt-8 text-md-left" style="">
-                  <v-catd-text style="font-size: larger">일</v-catd-text>
+                <v-col cols="3">
+
                 </v-col>
               </v-row>
               <v-row>
@@ -217,7 +191,6 @@
 <script>
 import axios from "axios";
 import { reactive } from "@vue/reactivity";
-
 export default {
   name: "LessonHome",
 
@@ -243,6 +216,7 @@ export default {
       num3: 0,
       num4: 0,
       tot: 0,
+      reserDate: "this.$moment().format('YYYY-MM-DD')",
     };
   },
 
@@ -256,6 +230,7 @@ export default {
       }, 2000);
     },
     onDetail() {
+      this.$store.commit("setReserDate", this.reserDate);
       this.$store.commit("setName", this.num1);
       this.$store.commit("setSmall", this.num2);
       this.$store.commit("setBoard", this.num3);
