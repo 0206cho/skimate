@@ -4,17 +4,19 @@ import Main from "@/pages/Main"
 import Login from "@/pages/Login";
 import LessonHome from '../pages/lesson/LessonHome.vue';
 import LessonWrite from '../pages/lesson/LessonWrite.vue';
-
+import SocialRedirect from '@/components/SocialRedirect.vue'
 import LessonDetail from '../pages/lesson/LessonDetail.vue';
 import LessonPay from '../pages/lesson/LessonPay.vue';
-
+import Join from '../pages/Join.vue'
 import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
 
 const routes = [
   { path: "/", name : 'Main', component: Main},
+  { path: "/oauth/redirect", component: SocialRedirect },
   { path: "/ski", name : 'ski' ,component: Home },
   { path: "/login", component: Login },
+  { path: "/join", component: Join },
   // 강습 메인페이지
   { path: "/lesson", component: LessonHome},
   // 강습 작성페이지

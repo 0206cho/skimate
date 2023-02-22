@@ -24,10 +24,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <router-link to="/login" class="text-black" v-if="!$store.state.account.id" style="text-decoration: none;">
-                        <v-icon dark size="40px">mdi-account</v-icon>
+                      <router-link to="/login" class="text-black" v-if="!$store.state.account.memberId" style="text-decoration: none;">
+                        login
                       </router-link>
-                      <a to="/login" class="text-white" @click="logout()" v-else>Logout</a>
+                      <a href="/ski" @click="logout()" v-else>logout</a>
                     </li>
                   </ul>
                 </div>

@@ -10,7 +10,8 @@ const store = createStore({
         memberId : ""
       },
       skiRounge: {
-        skiName : ""
+        skiName : "",
+        skiId : 0
       },
       bigPerson: 0,
       smallPerson: 0,
@@ -19,17 +20,13 @@ const store = createStore({
       tot: 0
     };
   },
-  // state: {
-  //   name: '',
-  //   job: ''
-  // },
-
   mutations: {
     setAccesToken(state, payload) {
       state.account.memberId = payload;
     },
-    setSkiRoungeName(state, skiName) {
-      state.skiRounge.skiName = skiName;
+    setSkiRoungeName(state, item) {
+      state.skiRounge.skiName = item.skiName;
+      state.skiRounge.skiId = item.skiNum;
     },
     setName(state, big){
       state.bigPerson = big;
