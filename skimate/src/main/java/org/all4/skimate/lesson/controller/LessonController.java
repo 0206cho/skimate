@@ -9,8 +9,12 @@ import org.all4.skimate.jwt.service.JwtService;
 import org.all4.skimate.lesson.dto.LessonDTO;
 import org.all4.skimate.lesson.entity.Lesson;
 import org.all4.skimate.lesson.repository.LessonRepository;
+import org.all4.skimate.lesson.service.LessonService;
+import org.all4.skimate.member.domain.Member;
 import org.all4.skimate.member.repository.MemberRepository;
+import org.all4.skimate.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +38,16 @@ public class LessonController {
 
 	@Autowired
 	LessonRepository lessonRepository;
-
+	
+	@Autowired
+	LessonService lessonService;
+	
+	@Autowired
+	MemberRepository memberRepository;
+	
+	@Autowired
+	MemberService memberService;
+	
 	@Autowired
 	JwtService jwtService;
 
@@ -45,30 +58,27 @@ public class LessonController {
 		return lesson;
 	}
 
+	// 글 작성하기 위해서 vue의 form 입력 값 spring으로 받기
 	@PostMapping("/api/lesson/write")
-	public void write(@RequestBody LessonDTO dto, HttpServletRequest request) {
+	public void write(@RequestBody LessonDTO dto, HttpServletRequest request, BindingResult bindingResult) {
 		String accessTocken = jwtService.extractAccessToken(request)
 				.orElseThrow(() -> new IllegalArgumentException("없습니다"));
 		String memberId = jwtService.extractMemberId(accessTocken)
 				.orElseThrow(() -> new IllegalArgumentException("없습니다"));
 		
-		System.out.println("제목 : " + dto.getTitle());
-		System.out.println("내용 : " + dto.getContent());
-		System.out.println("가격 : " + dto.getPrice());
-		System.out.println("카테고리 : " + dto.getCategory());
-		System.out.println("start : " + dto.getStartDate());
-		System.out.println("end : " + dto.getEndDate());
-		System.out.println("memberId : " + memberId);
+		// name을 가져오기 위해서 id를 통해 member전체를 찾은 후 그 member에서 id를 뽑아옴
+		Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("없습니다"));
+		String memberName = member.getMemberName();
 		
-		System.out.println("skiName : " + dto.getSkiName());
-		
-//		1. 스키 이름 가져오기
-//		2. 멤버 이름 가져오기
-//		3. insert db
-//
-//		4. 수정 폼 수정
-//		5. update db
+		if (bindingResult.hasErrors()) {
+			System.out.println("바인딩에러");
+		}
 
-		
+		try {
+			Lesson lesson = Lesson.writeLesson(dto);
+			lessonService.saveLesson(lesson, memberId, memberName);
+		} catch (Exception e) {
+			System.out.println("등록 에러");
+		}
 	}
 }
