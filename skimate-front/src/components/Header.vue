@@ -6,13 +6,13 @@
         <v-row style="display: flex; justify-content: center;" class="py-5">
           <v-col cols="12" >
             <v-row justify="center" align="center" style="height: 100%;">
-              <v-col cols="3">
+              <v-col cols="4">
                 <a class="navbar-brand " href="/">
                   <img :src="img" alt="logo" style="height:30px;" /></a>
               </v-col>
 
-              <v-col cols="6">
-                <a class="navbar-brand pr-5" href="/" style="font-family: 'Title_bold'; color: #053D68;">{{ $store.state.skiRounge.skiName }}</a>
+              <v-col cols="5">
+                <a class="navbar-brand pr-5" href="/ski" style="font-family: 'Title_bold'; color: #053D68;">{{ $store.state.skiRounge.skiName }}</a>
                 <a class="navbar-brand px-5" href="/reservation" style="font-family: 'Title_font'">예약</a>
                 <a class="navbar-brand px-5" href="/lesson" style="font-family: 'Title_font'">강습</a>
                 <a class="navbar-brand px-5" href="/" style="font-family: 'Title_font'">공지사항</a>
@@ -24,10 +24,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <router-link to="/login" class="text-black" v-if="!$store.state.account.memberId" style="text-decoration: none;">
-                        login
+                      <router-link to="/login" class="text-black navbar-brand" v-if="!$store.state.account.memberId" style="font-family: 'Title_bold'; font-size: medium; text-decoration: none;">
+                        로그인
                       </router-link>
-                      <a href="/ski" @click="logout()" v-else>logout</a>
+                      <a class="navbar-brand" href="/" @click="logout()" v-else style="font-family: 'Title_bold'; font-size: medium;">로그아웃</a>
                     </li>
                   </ul>
                 </div>
