@@ -108,44 +108,49 @@ export default {
   name: "ReserDetail",
 
   setup() {
-    const store = useStore();
-    const storeBigPerson = computed(() => store.state.bigPerson);
-    const storeSmallPerson = computed(() => store.state.smallPerson);
-    const storeSki = computed(() => store.state.ski);
-    const storeBoard = computed(() => store.state.board);
-    const storeSkiId = computed(() => store.state.skiRounge.skiId);
-    const storeTot = computed(() => store.state.tot);
-
-    const states = reactive({
-      form: {
-        price: storeTot,
-        bigPerson: storeBigPerson,
-        smallPerson: storeSmallPerson,
-        ski: storeSki,
-        board: storeBoard,
-        skiId: storeSkiId,
-      },
-    });
 
 
-    const submit = () => {
-      axios.post("http://localhost:8080/api/cash/reservation", states.form, {
-        headers: {
-          Authorization: "Bearer " + sessionStorage.getItem("id"),
-        },
-      })
-        .then((res) => {
-          console.log("res : " + res);
-        })
-        .catch(() => {
-          window.alert("로그인 정보가 처리되지 않았습니다.");
-        });
-    };
+               const store = useStore();
+            const storeBigPerson = computed(() => store.state.bigPerson);
+            const storeSmallPerson = computed(() => store.state.smallPerson);
+            const storeSki = computed(() => store.state.ski);
+            const storeBoard = computed(() => store.state.board);
+            const storeSkiId = computed(() => store.state.skiRounge.skiId);
+            const storeTot = computed(() => store.state.tot);
+            const storeReserDate = computed(() => store.state.reserDate);
 
-    return {
-      states,
-      submit,
-    };
+            const states = reactive({
+              form: {
+                price: storeTot,
+                bigPerson: storeBigPerson,
+                smallPerson: storeSmallPerson,
+                ski: storeSki,
+                board: storeBoard,
+                skiId: storeSkiId,
+                reserDate: storeReserDate
+              },
+            });
+
+
+            const submit = () => {
+            axios.post("http://localhost:8080/api/cash/reservation", states.form, {
+                headers: {
+                  Authorization: "Bearer " + sessionStorage.getItem("id"),
+                },
+              })
+              .then((res) => {
+                console.log("res : " + res);
+              })
+              .catch(() => {
+                window.alert("로그인 정보가 처리되지 않았습니다.");
+              });
+              };
+
+            return {
+              states,
+              submit,
+            };
+
 
   },
   data() {
@@ -164,7 +169,7 @@ export default {
           pg: "html5_inicis",
           pay_method: "card",
           merchant_uid: "merchant_" + new Date().getTime(),
-          name: "예약 결제",
+          name: "스키메이트 결제",
           //amount: this.price,
           amount: 300,
           buyer_email: "funidea_woo@naver.com",

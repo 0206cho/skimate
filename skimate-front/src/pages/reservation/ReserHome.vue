@@ -111,24 +111,15 @@
 </template>
 
 <script>
-import axios from "axios";
-import { reactive } from "@vue/reactivity";
+//import axios from "axios";
+//import { reactive } from "@vue/reactivity";
 export default {
   name: "LessonHome",
 
-  setup() {
-    const state = reactive({
-      items: [],
-    });
-    axios.get("http://localhost:8080/api/lesson/list", {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('id')
-      }
-    }).then((res) => {
-      console.log(res.data);
-      state.items = res.data;
-    });
-    return { state }
+
+
+   setup(){
+
   },
 
   data() {
@@ -138,7 +129,7 @@ export default {
       num3: 0,
       num4: 0,
       tot: 0,
-      reserDate: "this.$moment().format('YYYY-MM-DD')",
+      reserDate: "",
     };
   },
 

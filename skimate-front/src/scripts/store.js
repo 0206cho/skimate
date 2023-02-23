@@ -17,7 +17,8 @@ const store = createStore({
       board: 0,
       ski: 0,
       tot: 0,
-      reserDate: ""
+      reserDate: "",
+      lessonDetail: 0
     };
   },
   mutations: {
@@ -45,6 +46,9 @@ const store = createStore({
     },
     setTotal(state, tot){
       state.tot = tot;
+    },
+    setLessonDetail(state, detail){
+      state.lessonDetail = detail;
     }
   },
   plugins:[
