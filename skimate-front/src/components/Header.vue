@@ -6,18 +6,20 @@
         <v-row style="display: flex; justify-content: center;" class="py-5">
           <v-col cols="12" >
             <v-row justify="center" align="center" style="height: 100%;">
-              <v-col cols="4">
+              <v-col cols="3">
                 <a class="navbar-brand " href="/">
                   <img :src="img" alt="logo" style="height:30px;" /></a>
               </v-col>
 
-              <v-col cols="5">
+              <v-col cols="6">
                 <a class="navbar-brand pr-5" href="/ski" style="font-family: 'Title_bold'; color: #053D68;">{{ $store.state.skiRounge.skiName }}</a>
                 <a class="navbar-brand px-5" href="/reservation" style="font-family: 'Title_font'">예약</a>
                 <a class="navbar-brand px-5" href="/lesson" style="font-family: 'Title_font'">강습</a>
                 <a class="navbar-brand px-5" href="/" style="font-family: 'Title_font'">공지사항</a>
+                <a class="navbar-brand px-5" href="http://pf.kakao.com/_NaTexj" style="font-family: 'Title_font'">문의사항
+                </a>
               </v-col>
-              <v-col cols="3">
+              <v-col cols="2">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                   <span class="navbar-toggler-icon"></span>
                 </button>
