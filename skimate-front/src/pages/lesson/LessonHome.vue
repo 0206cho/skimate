@@ -66,7 +66,7 @@
           </thead>
           <tbody>
             <tr class="text-center" v-for="(item, idx) in state.lesson" :key="idx">
-              <td>{{ item.lessonId }}</td>
+              <td>{{ idx+1 }}</td>
               <td>{{ item.lesson_title }}</td>
               <td>{{ item.lesson_category }}</td>
               <td>{{ item.lesson_lsdate }}</td>
