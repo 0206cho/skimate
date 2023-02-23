@@ -15,9 +15,11 @@
                 <a class="navbar-brand pr-5" href="/ski" style="font-family: 'Title_bold'; color: #053D68;">{{ $store.state.skiRounge.skiName }}</a>
                 <a class="navbar-brand px-5" href="/reservation" style="font-family: 'Title_font'">예약</a>
                 <a class="navbar-brand px-5" href="/lesson" style="font-family: 'Title_font'">강습</a>
+
                 <a class="navbar-brand px-5" href="/" style="font-family: 'Title_font'">공지사항</a>
                 <a class="navbar-brand px-5" href="https://app.gather.town/app/0aIZT9Y78MUNGZ1L/skimate" style="font-family: 'Title_font'">커뮤니티</a>
                 <a class="navbar-brand px-5" href="http://pf.kakao.com/_NaTexj" style="font-family: 'Title_font'">문의사항 </a>
+
               </v-col>
               <v-col cols="1">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">

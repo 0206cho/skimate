@@ -11,7 +11,8 @@ import Join from '../pages/Join.vue'
 import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
 import InfoUpdate from "../pages/MemberInfoUpdate.vue";
-
+import SkiPost from "../pages/skiPost/SkiPost.vue"
+import SkiPostWriter from "../pages/skiPost/SkiPostWrite.vue"
 import Calendar from '../pages/lesson/Calendar.vue';
 
 const routes = [
@@ -19,6 +20,8 @@ const routes = [
   { path: "/oauth/redirect", component: SocialRedirect },
   { path: "/memberInfoUdate", component: InfoUpdate },
   { path: "/ski", name : 'ski' ,component: Home },
+  { path: "/skiPost", name : 'skiPost' ,component: SkiPost },
+  { path: "/skiPostWrite", name : 'skiPostWriter' ,component: SkiPostWriter },
   { path: "/login", component: Login },
   { path: "/join", component: Join },
   // 강습 메인페이지
