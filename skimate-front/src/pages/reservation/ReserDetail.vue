@@ -149,13 +149,14 @@ export default {
   name: "ReserDetail",
 
   setup() {
-    const store = useStore();
+            const store = useStore();
             const storeBigPerson = computed(() => store.state.bigPerson);
             const storeSmallPerson = computed(() => store.state.smallPerson);
             const storeSki = computed(() => store.state.ski);
             const storeBoard = computed(() => store.state.board);
             const storeSkiId = computed(() => store.state.skiRounge.skiId);
             const storeTot = computed(() => store.state.tot);
+            const storeReserDate = computed(() => store.state.reserDate);
 
             const states = reactive({
               form: {
@@ -165,6 +166,7 @@ export default {
                 ski: storeSki,
                 board: storeBoard,
                 skiId: storeSkiId,
+                reserDate: storeReserDate
               },
             });
 
@@ -205,7 +207,7 @@ export default {
           pg: "html5_inicis",
           pay_method: "card",
           merchant_uid: "merchant_" + new Date().getTime(),
-          name: "예약 결제",
+          name: "스키메이트 결제",
           //amount: this.price,
           amount: 300,
           buyer_email: "funidea_woo@naver.com",

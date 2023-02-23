@@ -42,21 +42,20 @@
             </v-col>
 
             <v-col cols="10">
+
               <v-row class="my-9">
-                  <div class="mx-10">2023-02-17</div>
-                  <div class="mx-10">~</div>
-                  <div class="mx-10">2023-02-17</div>
+                  <div class="mx-10">{{ state.lesson.lesson_lsdate }}</div>
               </v-row>
               <v-row class="my-10">
-                <div class="mx-10 mt-1">스키</div>
+                <div class="mx-10 mt-1">{{ state.lesson.lesson_category }}</div>
               </v-row>
               <v-row class="my-10">
-                <div class="mx-10 mt-4">1000원</div>
+                <div class="mx-10 mt-4">{{ state.lesson.lesson_price }}</div>
               </v-row>
               <v-row class="my-11">
-                <div class="mx-10 mt-4">초급 코스만 가능하며, 11시부터 16시까지만 강습 진행 예정입니다.</div>
+                <div class="mx-10 mt-4">{{ state.lesson.lesson_content }}</div>
               </v-row>
-              
+
             </v-col>
 
           </v-row>
@@ -74,10 +73,58 @@
     </v-row>
   </v-container>
 </template>
-  
+
 <script>
+import { useStore } from "vuex";
+import { computed } from "vue";
+//import { useStore } from "vuex";
+import axios from "axios";
+import { reactive } from "@vue/reactivity";
 export default {
   name: "LessonHome",
+  data(){
+    return {
+
+    }
+  },
+  mounted(){
+    const store = useStore();
+    const storeLessonDetail = computed(() => store.state.lessonDetail);
+    this.detail(storeLessonDetail.value);
+  },
+
+setup(){
+
+  //const store = useStore();
+  //const storeLessonDetail = computed(() => store.state.lessonDetail);
+
+  //console.log("김민솔 : " + storeLessonDetail.value)
+
+  const state = reactive({
+      lesson: []
+    });
+
+
+  const detail = (storeLessonDetail) => {
+      axios.get(`http://localhost:8080/api/lesson/detail/${storeLessonDetail}`, {
+          headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem('id')
+          }
+        })
+        .then((res) => {
+          state.lesson = res.data;
+        })
+        .catch(() => {
+        });
+    }
+
+    return {
+      detail,
+      state
+      //storeLessonDetail
+    }
+},
+
   methods: {
     onClick() {
       this.loading = true
@@ -90,5 +137,5 @@ export default {
   },
 };
 </script>
-  
+
 <style scoped></style>
