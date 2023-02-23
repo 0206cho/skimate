@@ -14,6 +14,7 @@ import InfoUpdate from "../pages/MemberInfoUpdate.vue";
 import SkiPost from "../pages/skiPost/SkiPost.vue"
 import SkiPostWriter from "../pages/skiPost/SkiPostWrite.vue"
 import Calendar from '../pages/lesson/Calendar.vue';
+import SkiPostView from '../pages/skiPost/SkiPostView.vue'
 
 const routes = [
   { path: "/", name : 'Main', component: Main},
@@ -22,6 +23,7 @@ const routes = [
   { path: "/ski", name : 'ski' ,component: Home },
   { path: "/skiPost", name : 'skiPost' ,component: SkiPost },
   { path: "/skiPostWrite", name : 'skiPostWriter' ,component: SkiPostWriter },
+  { path: "/skiPostView", name : 'skiPostView' ,component: SkiPostView },
   { path: "/login", component: Login },
   { path: "/join", component: Join },
   // 강습 메인페이지

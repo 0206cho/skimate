@@ -62,7 +62,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="text-center" v-for="(item, idx) in state.lesson" :key="idx" @click="postWrite()">
+              <tr class="text-center" v-for="(item, idx) in state.lesson" :key="idx" @click="postView(item.postId)">
                 <td>{{ idx+1 }}</td>
                 <td>{{ item.postTitle }}</td>
                 <td>{{ item.memberId }}</td>
@@ -101,11 +101,18 @@ import store from '@/scripts/store';
             router.push({path:"/skiPostWrite"})
         }
       }
+
+      const postView = (postId) =>{
+        store.commit("setPostDetail", postId)
+        router.push({path:"/skiPostView"})
+
+      }
   
   
       return { 
         state,
-        postWrite 
+        postWrite,
+        postView 
         // remove 
       }
     }

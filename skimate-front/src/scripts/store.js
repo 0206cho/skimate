@@ -18,7 +18,8 @@ const store = createStore({
       ski: 0,
       tot: 0,
       reserDate: "",
-      lessonDetail: 0
+      lessonDetail: 0,
+      postDetail:0
     };
   },
   mutations: {
@@ -49,6 +50,9 @@ const store = createStore({
     },
     setLessonDetail(state, detail){
       state.lessonDetail = detail;
+    },
+    setPostDetail(state, detail){
+      state.postDetail = detail;
     }
   },
   plugins:[
