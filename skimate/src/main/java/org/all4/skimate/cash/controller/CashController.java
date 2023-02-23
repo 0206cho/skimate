@@ -9,6 +9,8 @@ import org.all4.skimate.cash.entity.Cash;
 import org.all4.skimate.cash.repository.CashRepository;
 import org.all4.skimate.cash.service.CashService;
 import org.all4.skimate.jwt.service.JwtService;
+import org.all4.skimate.member.domain.Member;
+import org.all4.skimate.member.repository.MemberRepository;
 import org.all4.skimate.reservation.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,9 @@ public class CashController {
 	
 	private final JwtService jwtService;
 	
+	@Autowired
+	MemberRepository memberRepository;
+	
 	@PostMapping("/reservation")
 	public void pay(@RequestBody CashDTO dto, HttpServletRequest request) {
 		String accessTocken = jwtService.extractAccessToken(request).orElseThrow(()->new IllegalArgumentException("없습니다"));
@@ -44,8 +49,11 @@ public class CashController {
 		System.out.println("예약일 : " + dto.getReserDate());
 		System.out.println("로그인 ID  : " + memberId);
 		
+		Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("없습니다"));
+		String memberName = member.getMemberName();
+		
 		Cash cash = cashService.saveCash(dto);
-		reservationService.saveReservation(dto, cash, memberId);
+		reservationService.saveReservation(dto, cash, memberId, memberName);
 		
 	}
 	

@@ -27,7 +27,7 @@ public class ReservationService {
 	private final CashRepository cashRepository;
 	private final MemberRepository memberRepository;
 	
-	public Reservation saveReservation(CashDTO dto,Cash cash,String memberId) {
+	public Reservation saveReservation(CashDTO dto,Cash cash,String memberId, String memberName) {
 		LocalDate localDate = LocalDate.now();
 	    Date date = java.sql.Date.valueOf(localDate);
 		Reservation reservation = Reservation.builder()
@@ -36,6 +36,7 @@ public class ReservationService {
 				.reservation_stdate(date)
 				.reservation_ski(dto.getSki())
 				.reservation_board(dto.getBoard())
+				.member_Name(memberName) 
 				.ski(skiRepository.findBySkiNum(dto.getSkiId()))
 				.cash(cash)
 				.member(memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("유저가 없습니다")))
