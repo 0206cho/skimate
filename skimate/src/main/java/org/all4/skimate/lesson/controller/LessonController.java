@@ -56,7 +56,7 @@ public class LessonController {
 	// DB의 data vue로 전송
 	@GetMapping("/api/lesson/list")
 	public List<Lesson> getList() {
-		List<Lesson> lesson = lessonRepository.findAll();
+		List<Lesson> lesson = lessonRepository.endLesson();
 		return lesson;
 	}
 
@@ -78,6 +78,7 @@ public class LessonController {
 
 		try {
 			Lesson lesson = Lesson.writeLesson(dto);
+			System.out.println(lesson.getLesson_price() + " " + memberId + " " + memberName);
 			lessonService.saveLesson(lesson, memberId, memberName);
 		} catch (Exception e) {
 			System.out.println("등록 에러");

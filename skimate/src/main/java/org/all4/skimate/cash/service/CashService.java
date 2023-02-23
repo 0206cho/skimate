@@ -23,4 +23,13 @@ public class CashService {
 		return cashRepository.save(cash);
 	}
 	
+	public Cash saveCashLesson(CashDTO dto ) {
+		Cash cash = new Cash();
+		cash.setCashPrice(dto.getPrice());
+		cash.setCashCategory("멘토링");
+		return cashRepository.save(cash);
+	}
+	
+	
+	
 }

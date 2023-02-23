@@ -23,6 +23,8 @@ public class CashDTO {
 	
 	private Long skiId;
 	
+	private int lessonId;
+	
 	private Date reserDate;
 
 	public String calPerson(CashDTO dto) {

@@ -1,5 +1,6 @@
 package org.all4.skimate.lesson.service;
 
+import org.all4.skimate.cash.entity.Cash;
 import org.all4.skimate.lesson.entity.Lesson;
 import org.all4.skimate.lesson.repository.LessonRepository;
 import org.all4.skimate.member.domain.Member;
@@ -29,6 +30,13 @@ public class LessonService {
 	public Lesson getLession(int lessionId) {
 		
 		return lessonRepository.findByLessonId(lessionId);
+	}
+	
+	public Lesson MentoSetCash(int lessionId,Cash cash) {
+		Lesson lesson = lessonRepository.findByLessonId(lessionId);
+		lesson.setCash(cash);
+		lesson.setEndYn("Y");
+		return lesson;
 	}
 	
 }
