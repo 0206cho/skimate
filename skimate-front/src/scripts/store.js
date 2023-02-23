@@ -6,7 +6,8 @@ const store = createStore({
   state() {
     return {
       account: {
-        memberId : ""
+        memberId : "",
+        memberRole : ""
       },
       skiRounge: {
         skiName : "",
@@ -25,6 +26,9 @@ const store = createStore({
   mutations: {
     setAccesToken(state, payload) {
       state.account.memberId = payload;
+    },
+    setMemberRole(state, payload) {
+      state.account.memberRole = payload;
     },
     setSkiRoungeName(state, item) {
       state.skiRounge.skiName = item.skiName;
