@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.all4.skimate.jwt.service.JwtService;
 import org.all4.skimate.member.domain.Member;
 import org.all4.skimate.member.domain.MemberDto;
+import org.all4.skimate.member.domain.Role;
 import org.all4.skimate.member.service.MemberService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +30,12 @@ public class MemberController {
         return "ok";
     }
 
-    @GetMapping("/jwt-test")
-    public String jwtTest(HttpServletRequest request){
+    @GetMapping("/userRole")
+    public Role memberRole(HttpServletRequest request){
         String memberId = getTokenMemberId(request);
 
         Member byTokenMember = memberService.findByTokenMember(memberId);
-        return byTokenMember.getMemberId();
+        return byTokenMember.getRole();
     }
 
 
