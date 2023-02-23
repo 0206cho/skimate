@@ -41,6 +41,7 @@ public class CashController {
 		System.out.println("스키 : " + dto.getSki());
 		System.out.println("보드 : " + dto.getBoard());
 		System.out.println("스키 ID : " + dto.getSkiId());
+		System.out.println("예약일 : " + dto.getReserDate());
 		System.out.println("로그인 ID  : " + memberId);
 		
 		Cash cash = cashService.saveCash(dto);

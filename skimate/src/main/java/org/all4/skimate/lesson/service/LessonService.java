@@ -24,7 +24,11 @@ public class LessonService {
 			lesson.setMember_Name(member.getMemberName());
 			lessonRepository.save(lesson);
 			System.out.println("등록완료");
+	}
+	
+	public Lesson getLession(int lessionId) {
 		
+		return lessonRepository.findByLessonId(lessionId);
 	}
 	
 }

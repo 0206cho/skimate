@@ -22,6 +22,8 @@ public class CashDTO {
 	private int board;
 	
 	private Long skiId;
+	
+	private Date reserDate;
 
 	public String calPerson(CashDTO dto) {
 		int result = 0;

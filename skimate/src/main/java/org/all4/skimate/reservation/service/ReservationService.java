@@ -32,6 +32,7 @@ public class ReservationService {
 	    Date date = java.sql.Date.valueOf(localDate);
 		Reservation reservation = Reservation.builder()
 				.reservation_pnum(dto.calPerson(dto))
+				.reservation_date(dto.getReserDate())
 				.reservation_stdate(date)
 				.reservation_ski(dto.getSki())
 				.reservation_board(dto.getBoard())
