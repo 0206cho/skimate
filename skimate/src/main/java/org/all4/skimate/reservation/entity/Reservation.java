@@ -53,6 +53,8 @@ public class Reservation {
 	@JoinColumn(name = "memberId")
 	private Member member;
 	
+	private String member_Name; // 글쓴이 이름
+	
 	@ManyToOne
 	@JoinColumn(name = "cashNum")
 	private Cash cash;

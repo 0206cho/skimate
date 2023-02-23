@@ -16,4 +16,6 @@ public class ReservationDTO {
 	private Date reservation_stdate; // 둥록일
 	
 	private String reservation_pnum; // 인원
+	
+	private String member_name; // 글쓴이
 }
