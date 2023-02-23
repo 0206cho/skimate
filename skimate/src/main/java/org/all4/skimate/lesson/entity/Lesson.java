@@ -29,7 +29,7 @@ public class Lesson {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int lesson_id; // 강습 id
+	private int lessonId; // 강습 id
 	
 	@Column(length = 500)
 	private String lesson_lsdate; // 강습 일자

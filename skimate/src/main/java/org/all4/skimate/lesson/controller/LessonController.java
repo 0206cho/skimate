@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
 public class LessonController {
 
 	// 연동 확인
@@ -87,8 +86,9 @@ public class LessonController {
 
 	// 상세페이지 id 넘기기
 	@GetMapping("/api/lesson/detail/{lessonId}")
-	public void detail(@PathVariable("lessonId") int lessonId) {
-		System.out.println(">>>>>>>>> id : "+ lessonId);		
+	public Lesson detail(@PathVariable("lessonId") int lessonId) {
+		System.out.println(" 넘어온거 : " + lessonId);
+		return lessonService.getLession(lessonId);
 	}
 	
 //	// 삭제
