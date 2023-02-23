@@ -133,5 +133,11 @@ public class JwtService {
         }
     }
 
+    public String getTokenMemberId(HttpServletRequest request) {
+        String accessToken = extractAccessToken(request).orElseThrow(() -> new IllegalArgumentException("토큰이없습니다."));
+        String memberId = extractMemberId(accessToken).orElseThrow(() -> new IllegalArgumentException("해당아이디 존재하지 않습니다,"));
+        return memberId;
+    }
+
 
 }

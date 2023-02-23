@@ -68,6 +68,8 @@ public class SecurityConfig {
                 .antMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**").permitAll()
                 .antMatchers("/sign-up").permitAll()
                 .antMatchers("/api/skiRounge").permitAll()
+                .antMatchers("/api/lesson/list").permitAll()
+                .antMatchers("/skiPost/**").permitAll()
                 .anyRequest().authenticated() // 위의 경로 이외에는 모두 인증된 사용자만 접근 가능
                 .and()
 
