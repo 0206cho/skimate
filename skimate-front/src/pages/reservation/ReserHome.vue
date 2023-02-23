@@ -103,7 +103,7 @@
           </v-col>
           <v-col cols="5">
             <v-btn class="mr-3" style="background-color:#053D68; color: white;" @click="onDetail()">예약</v-btn>
-            <v-btn v-if="$store.state.account.memberRole == 'ADMIN'" style="background-color:#053D68; color: white;"  to="/reservation/list">내역확인</v-btn>
+            <v-btn v-if="state.memberRole=='ADMIN'" style="background-color:#053D68; color: white;"  to="/reservation/list">내역확인</v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -113,11 +113,15 @@
 
 <script>
 //import axios from "axios";
-//import { reactive } from "@vue/reactivity";
+import { reactive } from "@vue/reactivity";
 export default {
   name: "LessonHome",
    setup(){
+    const state = reactive({
+      memberRole : sessionStorage.getItem('memberRole')
+    });
 
+    return{state}
   },
 
   data() {
