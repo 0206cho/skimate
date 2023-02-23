@@ -53,7 +53,7 @@ public class PostService {
 
     public List<PostResponseDto> postBySki(Long skiNum){
         Ski ski = skiRepository.findById(skiNum).orElseThrow(() -> new IllegalArgumentException("해당스키장 없어요"));
-        List<Post> skiPost = postRepository.findBySki(ski);
+        List<Post> skiPost = postRepository.findBySkiOrderByPostIdDesc(ski);
         List<PostResponseDto> postList = new ArrayList<PostResponseDto>();
 
 
@@ -64,6 +64,24 @@ public class PostService {
 
 
         return postList;
+    }
+
+
+    public PostDto postById(Long postId){
+        Post post = postRepository.findByPostId(postId);
+        PostDto postD = PostDto.builder()
+                .postTitle(post.getPostTitle())
+                .postContent(post.getPostContent())
+                .memberId(post.getMember().getMemberName())
+                .date(post.getDate())
+                .build();
+
+        return postD;
+    }
+
+    public void postClick(Long postId){
+        Post post = postRepository.findByPostId(postId);
+        post.clickPost(post);
     }
 
 

@@ -41,7 +41,7 @@ public class Post {
     private LocalDate date;
 
 
-    public void clickPost(PostDto postDto){
+    public void clickPost(Post postDto){
         int postClick = postDto.getPostClick();
         this.postClick = ++postClick;
     }

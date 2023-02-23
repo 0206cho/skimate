@@ -4,6 +4,7 @@ package org.all4.skimate.post.controller;
 import lombok.RequiredArgsConstructor;
 import org.all4.skimate.jwt.service.JwtService;
 import org.all4.skimate.member.service.MemberService;
+import org.all4.skimate.post.domain.Post;
 import org.all4.skimate.post.dto.PostDto;
 import org.all4.skimate.post.dto.PostResponseDto;
 import org.all4.skimate.post.service.PostService;
@@ -39,6 +40,13 @@ public class PostController {
         postService.postSave(postDto);
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/post/detail/{postId}")
+    public PostDto postView(@PathVariable Long postId){
+        postService.postClick(postId);
+
+        return postService.postById(postId);
     }
 
 

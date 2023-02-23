@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SkiRepository extends JpaRepository<Ski, Long> {
 	Ski findBySkiNum(Long skinum);
+
+
 }
