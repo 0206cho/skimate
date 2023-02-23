@@ -10,6 +10,7 @@ import org.all4.skimate.cash.repository.CashRepository;
 import org.all4.skimate.cash.service.CashService;
 import org.all4.skimate.jwt.service.JwtService;
 
+import org.all4.skimate.lesson.service.LessonService;
 import org.all4.skimate.member.domain.Member;
 import org.all4.skimate.member.repository.MemberRepository;
 
@@ -57,7 +58,7 @@ public class CashController {
 		String memberName = member.getMemberName();
 		
 				Cash cash = cashService.saveCash(dto);
-		reservationService.saveReservation(dto, cash, memberId);
+		reservationService.saveReservation(dto, cash, memberId, memberName);
 	}
 	
 	@PostMapping("/lesson")
