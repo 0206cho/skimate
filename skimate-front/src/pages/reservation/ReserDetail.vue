@@ -99,8 +99,8 @@ import { reactive } from "@vue/reactivity";
 import axios from "axios";
 import { computed } from "vue";
 import { useStore } from "vuex";
+import router from "@/scripts/router";
 
-//console.log(new Date().getTime());
 const { IMP } = window;
 
 
@@ -110,7 +110,7 @@ export default {
   setup() {
 
 
-               const store = useStore();
+            const store = useStore();
             const storeBigPerson = computed(() => store.state.bigPerson);
             const storeSmallPerson = computed(() => store.state.smallPerson);
             const storeSki = computed(() => store.state.ski);
@@ -189,7 +189,7 @@ export default {
             msg += "\n결제 금액 : " + rsp.paid_amount;
             msg += "\n카드 승인번호 : " + rsp.apply_num;
             console.log("결제 성공");
-
+            router.push({ path: `/ski` });
             this.submit()
 
           } else {
