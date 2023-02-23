@@ -9,7 +9,7 @@
         </v-col>
         <v-col cols="6">
           <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold'">
-            강&nbsp;&nbsp;습
+            공지 사항
           </h1>
         </v-col>
         <v-col cols="1">
@@ -35,8 +35,8 @@
                 </v-card-text>
               </v-col>
               <v-col cols="10">
-                <v-text-field class="mx-7" v-model="state.form.postTitle" variant="outlined" type="text"></v-text-field>
-                <v-textarea class="mx-7" v-model="state.form.postContent" auto-grow variant="outlined" rows="3"
+                <v-text-field class="mx-7 mt-7" v-model="state.form.postTitle" variant="outlined" type="text"></v-text-field>
+                <v-textarea class="mx-7 mt-2" v-model="state.form.postContent" auto-grow variant="outlined" rows="3"
                   row-height="25" rounded="true"></v-textarea>
               </v-col>
             </v-row>

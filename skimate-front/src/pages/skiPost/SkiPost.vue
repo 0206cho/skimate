@@ -9,7 +9,7 @@
         </v-col>
         <v-col cols="6">
           <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color:#053D68; font-family:'Title_bold';">
-            공&nbsp;&nbsp;지&nbsp;&nbsp;사&nbsp;&nbsp;항
+            공지 사항
           </h1>
         </v-col>
         <v-col cols="1">
@@ -35,7 +35,7 @@
                 </v-col>
                 <v-col cols="3" class="pt-7">
                   <v-btn class="white--text mr-3 mb-3" style="background-color:#053D68; color: white;"
-                    @click="postWrite()">글쓰기</v-btn>
+                    @click="postWrite()" v-if="state.memberRole=='ADMIN'">글쓰기</v-btn>
                 </v-col>
               </v-row>
             </v-col>
@@ -87,7 +87,9 @@ import store from '@/scripts/store';
     setup() {
       const state = reactive({
         lesson: [],
+        memberRole : sessionStorage.getItem('memberRole')
       });
+      
       
       
       axios.get(("http://localhost:8080/skiPost/"+store.state.skiRounge.skiId)).then((res) => {
