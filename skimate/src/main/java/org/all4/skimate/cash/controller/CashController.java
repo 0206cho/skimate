@@ -56,12 +56,18 @@ public class CashController {
 		Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("없습니다"));
 		String memberName = member.getMemberName();
 		
-		Cash cash = cashService.saveCash(dto);
-		reservationService.saveReservation(dto, cash, memberId, memberName);
-
-		
+				Cash cash = cashService.saveCash(dto);
+		reservationService.saveReservation(dto, cash, memberId);
 	}
 	
-
+	@PostMapping("/lesson")
+	public void payLesson(@RequestBody CashDTO dto, HttpServletRequest request) {
+		String accessTocken = jwtService.extractAccessToken(request).orElseThrow(()->new IllegalArgumentException("없습니다"));
+		String memberId = jwtService.extractMemberId(accessTocken).orElseThrow(()->new IllegalArgumentException("없습니다"));
+		
+		Cash cash = cashService.saveCashLesson(dto);
+		lessonService.MentoSetCash(dto.getLessonId(), cash);
+	
+	}
 
 }
