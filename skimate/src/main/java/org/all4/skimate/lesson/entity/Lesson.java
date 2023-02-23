@@ -10,15 +10,19 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.all4.skimate.cash.entity.Cash;
 import org.all4.skimate.lesson.dto.LessonDTO;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Getter
 @Setter
@@ -46,14 +50,28 @@ public class Lesson {
 	@Column(length = 500)
 	private String lesson_content; // 내 용
 	
+	@Column
 	private String lesson_date; // 게시일
     
-    private String member_id; // 글쓴이 아이디    
+	@Column
+    private String member_id; // 글쓴이 아이디   
+    
+	@Column
     private String member_Name; // 글쓴이 이름
     
     @Column(length = 100)
     private int ski_id; // 스키장 번호
+    
+    @Column
     private String ski_name; // 스키장 이름
+    
+    @Column
+    private String endYn; // 강습 예약 완료
+    
+    @ManyToOne
+	@JoinColumn(name = "cashNum")
+	private Cash cash; 
+     
 
 	public static Lesson writeLesson(LessonDTO dto) {
 		Lesson lesson = new Lesson();
@@ -67,6 +85,7 @@ public class Lesson {
 		lesson.setLesson_date(now.toString());
 		lesson.setSki_id(dto.getSkiId());
 		lesson.setSki_name(dto.getSkiName());
+		lesson.setEndYn("N");
 		
         // 결과 출력
         System.out.println(now);
