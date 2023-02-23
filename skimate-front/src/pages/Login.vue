@@ -96,13 +96,14 @@ export default {
           store.commit("setAccesToken", res.data);
           sessionStorage.setItem("id", res.data);
           console.log(res.data);
-          router.push({ path: "/ski" });
-          window.alert("login");
+          router.push({ path: "/setMemberRole" });
         })
         .catch(() => {
           window.alert("로그인 정보가 처리되지 않았습니다.");
         });
     };
+
+
 
 
 

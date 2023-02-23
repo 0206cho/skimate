@@ -19,8 +19,7 @@ export default {
         }else if(token && role=="USER"){
             store.commit('setAccesToken', token);
             sessionStorage.setItem('id', token);
-            window.alert('login');
-            router.push({path:'/ski'})
+            router.push({path:'/setMemberRole'})
         }else{
             window.alert("login fail")
             router.push({path:'/login'})

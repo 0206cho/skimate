@@ -55,6 +55,7 @@ export default {
     const logout = () =>{
       store.commit('setAccesToken', "")
       sessionStorage.removeItem("id")
+      sessionStorage.removeItem("memberRole")
       router.push({path:"/"})
     }
 

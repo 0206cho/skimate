@@ -15,12 +15,14 @@ import SkiPost from "../pages/skiPost/SkiPost.vue"
 import SkiPostWriter from "../pages/skiPost/SkiPostWrite.vue"
 import Calendar from '../pages/lesson/Calendar.vue';
 import SkiPostView from '../pages/skiPost/SkiPostView.vue'
+import SetMemberRole from '../components/SetMemberRole.vue'
 
 const routes = [
   { path: "/", name : 'Main', component: Main},
   { path: "/oauth/redirect", component: SocialRedirect },
   { path: "/memberInfoUdate", component: InfoUpdate },
   { path: "/ski", name : 'ski' ,component: Home },
+  { path: "/setMemberRole" ,component: SetMemberRole },
   { path: "/skiPost", name : 'skiPost' ,component: SkiPost },
   { path: "/skiPostWrite", name : 'skiPostWriter' ,component: SkiPostWriter },
   { path: "/skiPostView", name : 'skiPostView' ,component: SkiPostView },
