@@ -16,7 +16,7 @@ export default {
             store.commit('setAccesToken', token);
             sessionStorage.setItem('id', token);
             router.push({path:'/memberInfoUdate'})
-        }else if(token && role=="USER"){
+        }else if((token && role=="USER") || (token && role=="ADMIN")){
             store.commit('setAccesToken', token);
             sessionStorage.setItem('id', token);
             router.push({path:'/setMemberRole'})

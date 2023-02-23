@@ -10,6 +10,7 @@ import LessonPay from '../pages/lesson/LessonPay.vue';
 import Join from '../pages/Join.vue'
 import ReserHome from '../pages/reservation/ReserHome.vue';
 import ReserDetail from '../pages/reservation/ReserDetail.vue';
+import ReserList from '../pages/reservation/ReserList.vue';
 import InfoUpdate from "../pages/MemberInfoUpdate.vue";
 import SkiPost from "../pages/skiPost/SkiPost.vue"
 import SkiPostWriter from "../pages/skiPost/SkiPostWrite.vue"
@@ -40,6 +41,8 @@ const routes = [
   { path: "/reservation", component: ReserHome},
   // 예약 상세페이지
   { path: "/reservation/detail", component: ReserDetail, name: 'ReserDetail'},
+  // 예약 상세페이지
+  { path: "/reservation/list", component: ReserList, name: 'ReserList'},
   // 풀캘린더 테스트
   { path: "/calendar", component: Calendar},
 ];

@@ -4,17 +4,17 @@
     <v-row>
       <v-col cols="2"></v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color: #053d68; font-family: 'Title_bold';">
+        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color: #053d68; font-family:'Title_bold';">
           |
         </h1>
       </v-col>
       <v-col cols="6">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color: #053d68; font-family: 'Title_bold';">
+        <h1 class="pt-12 px-0" style=" font-family:'Title_bold'; display: flex; justify-content: center; color: #053d68;">
           예&nbsp;&nbsp;약
         </h1>
       </v-col>
       <v-col cols="1">
-        <h1 class="pt-12 px-0" style="display: flex; justify-content: center; color: #053d68; font-family: 'Title_bold';">
+        <h1 class="pt-12 px-0" style=" font-family:'Title_bold'; display: flex; justify-content: center; color: #053d68;">
           |
         </h1>
       </v-col>
@@ -101,8 +101,9 @@
           <v-col cols="3">
             <h3 class="text-right">총 {{ num1 * 25000 + num2 * 12000 + num3 * 15000 + num4 * 15000 }}  원</h3>
           </v-col>
-          <v-col cols="3">
-            <v-btn style="background-color:#053D68; color: white;" @click="onDetail()">예약</v-btn>
+          <v-col cols="5">
+            <v-btn class="mr-3" style="background-color:#053D68; color: white;" @click="onDetail()">예약</v-btn>
+            <v-btn v-if="$store.state.account.memberRole == 'ADMIN'" style="background-color:#053D68; color: white;"  to="/reservation/list">내역확인</v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -115,9 +116,6 @@
 //import { reactive } from "@vue/reactivity";
 export default {
   name: "LessonHome",
-
-
-
    setup(){
 
   },
@@ -153,7 +151,6 @@ export default {
       this.$router.push('/reservation/detail');
     },
     onTot() {
-
     },
   },
 };
