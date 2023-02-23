@@ -108,6 +108,8 @@ export default {
   name: "ReserDetail",
 
   setup() {
+
+=======
     const store = useStore();
     const storeBigPerson = computed(() => store.state.bigPerson);
     const storeSmallPerson = computed(() => store.state.smallPerson);
@@ -147,6 +149,7 @@ export default {
       submit,
     };
 
+
   },
   data() {
     return {
@@ -164,7 +167,7 @@ export default {
           pg: "html5_inicis",
           pay_method: "card",
           merchant_uid: "merchant_" + new Date().getTime(),
-          name: "예약 결제",
+          name: "스키메이트 결제",
           //amount: this.price,
           amount: 300,
           buyer_email: "funidea_woo@naver.com",

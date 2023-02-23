@@ -66,13 +66,13 @@
           </thead>
           <tbody>
             <tr class="text-center" v-for="(item, idx) in state.lesson" :key="idx">
-              <td>{{ item.lesson_id }}</td>
+              <td>{{ item.lessonId }}</td>
               <td>{{ item.lesson_title }}</td>
               <td>{{ item.lesson_category }}</td>
               <td>{{ item.lesson_lsdate }}</td>
               <td>{{ item.lesson_date }}</td>
               <td><v-btn class="white--text" style="background-color:#053D68; color: white;"
-                  @click="detail (item.lesson_id)">더보기</v-btn></td>
+                  @click="detail (item.lessonId)">더보기</v-btn></td>
             </tr>
           </tbody>
         </v-table>
@@ -81,14 +81,20 @@
     </v-row>
   </v-container>
 </template>
-  
+
 <script>
+import { useStore } from "vuex";
 import axios from "axios";
 import { reactive } from "@vue/reactivity";
 import router from "@/scripts/router";
 export default {
   name: "LessonHome",
   setup() {
+
+    const store = useStore();
+    //store.commit("setLessonDetail",1);
+
+
     const state = reactive({
       lesson: [],
     });
@@ -98,10 +104,7 @@ export default {
         'Authorization': 'Bearer ' + sessionStorage.getItem('id')
       }
     }).then((res) => {
-      console.log(res.data);
-
       state.lesson = res.data;
-      console.log(state.lesson);
     });
 
     // const remove = (lessonId) => {
@@ -110,26 +113,16 @@ export default {
     //   })
     // }
 
+
     const detail = (lessonId) => {
-      axios
-        .post(`http://localhost:8080/api/lesson/detail/${lessonId}`, {
-          headers: {
-            'Authorization': 'Bearer ' + sessionStorage.getItem('id')
-          }
-        })
-        .then((res) => {
-          console.log(">>>>>>>>>>> res : " + res);
-          router.push({ path: `http://localhost:8080/api/lesson/detail/${lessonId}` });
-          window.alert("이동");
-        })
-        .catch(() => {
-          window.alert("다시 보내세요.");
-        });
+      store.commit("setLessonDetail",lessonId);
+      router.push({ path: `/lesson/detail` });
     }
-    return { 
-      state, 
+    return {
+      state,
       detail,
-      // remove 
+      //inc
+      // remove
     }
   },
   data() {
@@ -147,8 +140,9 @@ export default {
         this.loaded = true
       }, 2000)
     },
+
   },
 };
 </script>
-  
+
 <style scoped></style>

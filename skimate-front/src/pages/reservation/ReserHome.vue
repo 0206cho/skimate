@@ -111,10 +111,12 @@
 </template>
 
 <script>
-import axios from "axios";
-import { reactive } from "@vue/reactivity";
+//import axios from "axios";
+//import { reactive } from "@vue/reactivity";
 export default {
   name: "LessonHome",
+
+
 
   setup() {
     const state = reactive({
@@ -129,6 +131,7 @@ export default {
       state.items = res.data;
     });
     return { state }
+
   },
 
   data() {
@@ -138,7 +141,7 @@ export default {
       num3: 0,
       num4: 0,
       tot: 0,
-      reserDate: "this.$moment().format('YYYY-MM-DD')",
+      reserDate: "",
     };
   },
 
